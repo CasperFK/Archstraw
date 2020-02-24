@@ -24,13 +24,13 @@ const ListWrapper = styled.ul`
   list-style: none;
 `;
 
-const ListItem = styled.li`
+const ListItem = styled.li` 
   font-size: 16px;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #000000;
+  color: #000000;  
 `;
 
 const LogoutBtn = styled.button`

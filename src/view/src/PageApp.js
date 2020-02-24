@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledPageApp = styled.h1`
   background-color: #282c43;
-  min-height: 10vh;
+  height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;

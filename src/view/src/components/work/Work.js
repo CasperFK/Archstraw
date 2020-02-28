@@ -22,6 +22,17 @@ const ListItem = styled.li`
   line-height: 35px;
 `;
 
+const InfoElement = styled.div`
+  height: 30px;
+  text-align: center;
+  color: red;
+`;
+
+const LinkItem = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 const Work = () => {
   let { path, url } = useRouteMatch();
   return (
@@ -29,16 +40,16 @@ const Work = () => {
       <NavWrapper>
         <Navigation>
           <ListItem>
-            <Link to={`${url}/day`}>Nowy dzień</Link>
+            <LinkItem to={`${url}/day`}>Nowy dzień</LinkItem>
           </ListItem>
           <ListItem>
-            <Link to={`${url}/managment`}>Zarządzanie</Link>
+            <LinkItem to={`${url}/managment`}>Zarządzanie</LinkItem>
           </ListItem>
         </Navigation>
       </NavWrapper>
       <Switch>
         <Route exact path={path}>
-          <div>wybierz sekcje</div>
+          <InfoElement>wybierz sekcje</InfoElement>
         </Route>
         <Route path={`${path}/:topicId`}>
           <Topic />

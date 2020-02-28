@@ -58,25 +58,9 @@ const Form = (props) => {
     password: ''
   });
 
-  const validate = (formData, login, pass) => {
-    if (formData.login !== login) {
-      return "Nie poprawny login";
-    } else if (formData.password !== pass) {
-      return "Nie poprawne hasło";
-    }
-    return null;
-  }
+  const { changeCorrect, changeIncorrect, handleChange, validate } = props;
 
-  const handleChange = e => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setForm({
-      ...form,
-      [name]: value,
-    })
-  }
-
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     fetch("./data.json")
       .then(response => response.json())
@@ -84,10 +68,10 @@ const Form = (props) => {
         const errorMsg = validate(form, response.admin.login, response.admin.pass);
         if (errorMsg) {
           setError(errorMsg)
-          props.changeIncorrect();
+          changeIncorrect();
         }
         else if (errorMsg === null) {
-          props.changeCorrect();
+          changeCorrect();
         }
       });
   }
@@ -102,7 +86,7 @@ const Form = (props) => {
           name="login"
           value={form.login}
           type="text"
-          onChange={handleChange}
+          onChange={(e) => handleChange(e, setForm, form)}
           placeholder="login" />
       </LoginPart>
       <LoginPart>
@@ -111,7 +95,7 @@ const Form = (props) => {
           name="password"
           value={form.password}
           type="password"
-          onChange={handleChange}
+          onChange={(e) => handleChange(e, setForm, form)}
           placeholder="hasło" />
       </LoginPart>
       <SubmitBtn onClick={handleSubmit}>zaloguj</SubmitBtn>
@@ -123,6 +107,5 @@ const mapDispatchToProps = dispatch => ({
   changeCorrect: () => dispatch(actions.changeCorrect()),
   changeIncorrect: () => dispatch(actions.changeIncorrect())
 });
-
 
 export default connect(null, mapDispatchToProps)(Form);

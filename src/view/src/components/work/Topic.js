@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import Managment from './Managment';
 import NewDay from './NewDay';
+import Create from './Create';
 
 
 const Topic = () => {
@@ -9,7 +10,7 @@ const Topic = () => {
 
   return (
     <div>
-      {topicId === "day" ? <NewDay /> : <Managment />}
+      {topicId === "day" ? <NewDay /> : topicId === "managment" ? <Managment /> : <Create />}
     </div>
   )
 }

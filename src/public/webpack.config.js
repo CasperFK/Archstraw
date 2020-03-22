@@ -3,6 +3,7 @@ const path = require("path");
 module.exports = {
     entry: "./src/index.js",
     mode: "development",
+    devtool: "source-map",
     module: {
         rules: [
             {
@@ -14,10 +15,24 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.ts(x?)$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "ts-loader"
+                    }
+                ]
+            },
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader"
             }
         ]
     },
-    resolve: { extensions: ["*", ".js", ".jsx"] },
+    resolve: { extensions: ["*", ".js", ".jsx", ".ts", ".tsx"] },
     output: {
         path: path.resolve(__dirname, "dist/"),
         publicPath: "/dist/",
@@ -30,5 +45,9 @@ module.exports = {
         historyApiFallback: true,
         hot: true,
         open: true,
+    },
+    externals: {
+        "react": "React",
+        "react-dom": "ReactDOM"
     }
 };

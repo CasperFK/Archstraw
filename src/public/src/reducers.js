@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import changeFlagSignInReducer from './app/signIn/duck';
-import createDayOfWork from './app/work/duck';
+import { default as methods } from './app/work/duck';
 
 const rootReducer = combineReducers({
   signIn: changeFlagSignInReducer,
-  dayOfWork: createDayOfWork
+  dayOfWork: methods.dayService,
+  employer: methods.createNewEmployer,
 });
 
 export default rootReducer;
-

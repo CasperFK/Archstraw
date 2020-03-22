@@ -1,5 +1,9 @@
-import createDayOfWork from './reducer';
-export { default as dayInTypes } from './types';
-export { default as dayInActions } from './actions';
+import dayService from './reducerCreateDay';
+import createNewEmployer from './reducerCreateEmployer';
+export { default as types } from './types';
+export { default as actions } from './actions';
 
-export default createDayOfWork;
+export default {
+  dayService,
+  createNewEmployer,
+};

@@ -1,70 +1,101 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
+import { connect } from 'react-redux';
+import {
+  WrapperForm,
+  WrapperLabel,
+  FieldTitle,
+  FieldInput,
+  Btn,
+} from './styles/style';
+import actions from '../../app/work/duck/actions';
 
-const WrapperForm = styled.form`
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const WrapperLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 5px;
-`;
-
-const FieldTitle = styled.span`
-  display:block;
-  text-align: center;
-  padding: 3px 0;
-`;
-
-const FieldInput = styled.input`
-  width: 70%;
-  margin: 2px 5px;
-  padding: 3px;
-`;
-
-const Btn = styled.button`
-  width: 130px;
-  margin-bottom: 5px;
-  padding: 5px 0;
-  background-color: #ffffff;
-  border: 1px solid black;
-`;
-
-const Create = () => {
+const Create = ({ handleChange, ratio, createEmployer, date, addEmployer, listOfDays }) => {
   let history = useHistory();
+  const [form, setForm] = React.useState({
+    name: '',
+    surname: '',
+    phoneNumber: '',
+    startWork: date,
+    state: 0,
+    actualRatio: ratio,
+  });
+  const checkCurrentDayAndSearchingDay = () => {
+    const data = [...listOfDays];
+    data.forEach(day => day.date === date ? day.employes.push(form) : {});
+    return data;
+  }
+  const handleClickAccept = e => {
+    e.preventDefault();
+    createEmployer({
+      name: form.name,
+      surname: form.surname,
+      phoneNumber: form.phoneNumber,
+      startWork: form.date,
+      state: form.state,
+      actualRatio: form.actualRatio,
+    });
+    addEmployer({ listOfDays: checkCurrentDayAndSearchingDay()});
+    history.push('/work/managment/');
+  };
   const handleClick = e => {
     e.preventDefault();
     history.push('/work/managment/');
-  }
+  };
   return (
     <WrapperForm>
       <WrapperLabel>
         <FieldTitle>Imie</FieldTitle>
-        <FieldInput type="text" />
+        <FieldInput
+          name="name"
+          value={form.name}
+          onChange={e => handleChange(e, setForm, form)}
+          type="text"
+        />
       </WrapperLabel>
       <WrapperLabel>
         <FieldTitle>Nazwisko</FieldTitle>
-        <FieldInput type="text" />
+        <FieldInput
+          name="surname"
+          value={form.surname}
+          onChange={e => handleChange(e, setForm, form)}
+          type="text"
+        />
       </WrapperLabel>
       <WrapperLabel>
         <FieldTitle>Telefon</FieldTitle>
-        <FieldInput type="number" />
+        <FieldInput
+          name="phoneNumber"
+          value={form.phoneNumber}
+          onChange={e => handleChange(e, setForm, form)}
+          type="number"
+        />
       </WrapperLabel>
-      <WrapperLabel>
-        <FieldTitle>Czas rozpoczęcia pracy</FieldTitle>
-        <FieldInput type="text" />
-      </WrapperLabel>
-      <Btn onClick={handleClick}>Zatwierdź</Btn>
+      <Btn onClick={handleClickAccept}>Zatwierdź</Btn>
       <Btn onClick={handleClick}>Anuluj</Btn>
     </WrapperForm>
-  )
+  );
+};
+
+const mapDispatchToProps = dispatch => ({
+  createEmployer: employer => dispatch(actions.addEmployer(employer)),
+  addEmployer: employer => dispatch(actions.addEmployerToDay(employer))
+});
+
+const mapStateToProps = state => ({
+  ratio: state.dayOfWork.ratio,
+  date: state.dayOfWork.date,
+  listOfDays: state.dayOfWork.listOfDays,
+});
+
+Create.propTypes = {
+  handleChange: PropTypes.func,
+  createEmployer: PropTypes.func,
+  addEmployer: PropTypes.func,
+  ratio: PropTypes.number,
+  date: PropTypes.string,
+  listOfDays: PropTypes.array,
 }
 
-export default Create;
+export default connect(mapStateToProps, mapDispatchToProps)(Create);

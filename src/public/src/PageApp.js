@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledPageApp = styled.h1`
@@ -12,8 +12,6 @@ const StyledPageApp = styled.h1`
   color: white;
   font-family: Arial;
 `;
-
-export const PageApp = ({ title }) => {
-  return <StyledPageApp>{title}</StyledPageApp>
+export const PageApp = (props) => {
+  return <StyledPageApp>{props.title}</StyledPageApp>;
 };
-

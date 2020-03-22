@@ -1,6 +1,11 @@
 {
   "defaultSeverity": "error",
   "extends": ["tslint:recommended"],
+  "linterOptions": {
+    "exclude": [
+      "src/public"
+    ]
+  },
   "jsRules": {
     "no-unused-expression": true
   },

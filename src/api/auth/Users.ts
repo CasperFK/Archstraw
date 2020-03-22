@@ -1,12 +1,17 @@
 export const Users = [
   {
-    userName: 'kowalski15',
+    login: 'kowalski15',
     password: '12345@',
     fullName: 'Janusz Kowalski',
   },
   {
-    userName: 'nowak34',
+    login: 'nowak34',
     password: '12345@',
+    fullName: 'Bartek Nowak',
+  },
+  {
+    login: 'admin',
+    password: '1234567',
     fullName: 'Bartek Nowak',
   },
 ];

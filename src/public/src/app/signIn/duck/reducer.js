@@ -1,7 +1,7 @@
 import types from './types';
 
 const INITIAL_STATE = {
-  formFlag: true,
+  formFlag: false,
 }
 
 const changeFlagSignInReducer = (state = INITIAL_STATE, action) => {

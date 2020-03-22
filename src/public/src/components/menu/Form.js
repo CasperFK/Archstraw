@@ -35,6 +35,16 @@ const Form = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
           changeCorrect();
         }
       });
+    fetch('http://localhost:3000/api/auth/sign-in', {
+      method: 'POST',
+      body: form,
+    })
+      .then((data) => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
 
   return (

@@ -1,62 +1,42 @@
 import React from 'react';
 import { Wrapper, Title, Features, ListItem } from './styles/styles';
+import { withTranslation, useTranslation } from 'react-i18next';
 
 const MainPage = () => {
+
+  const { t } = useTranslation();
+
   return (
     <Wrapper>
-      <Title>Strona główna</Title>
+      <Title>{t('main.title')}</Title>
       <Features>
-        Funkcjonalności
+        {t('main.section1')}
         <ListItem>
           <Features>
-            Pracownik:
-            <ListItem>- dodawanie</ListItem>
-            <ListItem>- usuwanie</ListItem>
-            <ListItem>- edytowanie</ListItem>
-            <ListItem>- archiwizowanie</ListItem>
-            <ListItem>- wyszukiwanie</ListItem>
+            {t('main.article1')}
+            {t('main.article1elements', { returnObjects: true }).map(el =>
+              <ListItem>{el}</ListItem>)}
           </Features>
         </ListItem>
         <ListItem>
           <Features>
-            Dzień roboczy:
-            <ListItem>- dodawanie pracownika</ListItem>
-            <ListItem>- stawka dnia, z łubianki</ListItem>
-            <ListItem>- data dnia pracy</ListItem>
-            <ListItem>
-              - aktualizowanie stanu łubianek pracownika, możliwość tylko
-              dodawania
-            </ListItem>
-            <ListItem>- czas pracy, początek koniec</ListItem>
+            {t('main.article2')}
+            {t('main.article2elements', { returnObjects: true }).map(el =>
+              <ListItem>{el}</ListItem>)}
           </Features>
         </ListItem>
         <ListItem>
           <Features>
-            Wyszukiwanie pracownika po:
-            <ListItem>- nr. telefonu</ListItem>
-            <ListItem>- nazwisku</ListItem>
-            <ListItem>- dacie pracy</ListItem>
-            <ListItem>- wynagrodzeniu dziennym/całkowitym</ListItem>
-            <ListItem>- ilości nazbieranych łubianek</ListItem>
-            <ListItem>- ilości łubianek nazbieranych miesięcznie</ListItem>
-            <ListItem>- przepracowanych godzinnach dziennie</ListItem>
-            <ListItem>- przepracowanych godzinnach miesięcznie</ListItem>
+            {t('main.article3')}
+            {t('main.article3elements', { returnObjects: true }).map(el =>
+              <ListItem>{el}</ListItem>)}
           </Features>
         </ListItem>
         <ListItem>
           <Features>
-            Statystyka:
-            <ListItem>
-              - wykres przedstawiający ilość zebranych łubianek dziennie
-            </ListItem>
-            <ListItem>
-              - wykres przedstawiający ilość pieniędzy zapłaconych pracownikom
-              danego aktualnego dnia
-            </ListItem>
-            <ListItem>
-              - wykres przedstawiający wydajność pracowników, stosunek liczby
-              pracowników do nazbieranych łubianek
-            </ListItem>
+            {t('main.article4')}
+            {t('main.article4elements', { returnObjects: true }).map(item =>
+              <ListItem>{item}</ListItem>)}
           </Features>
         </ListItem>
       </Features>
@@ -64,4 +44,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default withTranslation()(MainPage);

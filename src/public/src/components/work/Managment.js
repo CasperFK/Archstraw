@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { CurrentDay, Title, AddEmployer} from './styles/style';
+import { CurrentDay, Title, AddEmployer } from './styles/style';
 import { useHistory } from 'react-router-dom';
+import { withTranslation, useTranslation } from 'react-i18next';
 
-const Managment = ({currentDay, date}) => {
+const Managment = ({ currentDay, date }) => {
+  const { t } = useTranslation();
+
   let history = useHistory();
   const handleClick = e => {
     e.preventDefault();
@@ -14,9 +17,9 @@ const Managment = ({currentDay, date}) => {
     <>
       {date !== "" ? <CurrentDay>
         <Title>
-          {`Dzisiejszy dzień pracy to ${currentDay[0].date}, a stawka dnia wynosi ${currentDay[0].ratio}zł.`}
+          {`${t('work.managment.currentDate')} ${currentDay[0].date} ${t('work.managment.ratio')} ${currentDay[0].ratio} ${t('work.managment.currency')}`}
         </Title>
-        <AddEmployer onClick={handleClick}>Dodaj pracownika</AddEmployer>
+        <AddEmployer onClick={handleClick}>{t('work.managment.addEmployer')}</AddEmployer>
       </CurrentDay> : ""}
     </>
   )
@@ -30,6 +33,6 @@ Managment.propTypes = {
 const mapStateToProps = state => ({
   currentDay: state.dayOfWork.listOfDays.filter(item => item.date === state.dayOfWork.date),
   date: state.dayOfWork.date,
-})
+});
 
-export default connect(mapStateToProps, {})(Managment);
+export default connect(mapStateToProps, {})(withTranslation()(Managment));

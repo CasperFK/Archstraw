@@ -10,8 +10,10 @@ import {
   Btn,
 } from './styles/style';
 import actions from '../../app/work/duck/actions';
+import { withTranslation, useTranslation } from 'react-i18next';
 
 const Create = ({ handleChange, ratio, createEmployer, date, addEmployer, listOfDays }) => {
+  const { t } = useTranslation();
   let history = useHistory();
   const [form, setForm] = React.useState({
     name: '',
@@ -36,7 +38,7 @@ const Create = ({ handleChange, ratio, createEmployer, date, addEmployer, listOf
       state: form.state,
       actualRatio: form.actualRatio,
     });
-    addEmployer({ listOfDays: checkCurrentDayAndSearchingDay()});
+    addEmployer({ listOfDays: checkCurrentDayAndSearchingDay() });
     history.push('/work/managment/');
   };
   const handleClick = e => {
@@ -72,8 +74,8 @@ const Create = ({ handleChange, ratio, createEmployer, date, addEmployer, listOf
           type="number"
         />
       </WrapperLabel>
-      <Btn onClick={handleClickAccept}>Zatwierdź</Btn>
-      <Btn onClick={handleClick}>Anuluj</Btn>
+      <Btn onClick={handleClickAccept}>{t('work.createEmployer.confirm')}</Btn>
+      <Btn onClick={handleClick}>{t('work.createEmployer.cancel')}</Btn>
     </WrapperForm>
   );
 };
@@ -98,4 +100,4 @@ Create.propTypes = {
   listOfDays: PropTypes.array,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Create);
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Create));

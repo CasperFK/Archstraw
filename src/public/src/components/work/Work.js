@@ -9,24 +9,26 @@ import {
 } from './styles/style';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import Topic from './Topic';
+import { withTranslation, useTranslation } from 'react-i18next';
 
 const Work = () => {
+  const { t } = useTranslation();
   let { path, url } = useRouteMatch();
   return (
     <Wrapper>
       <NavWrapper>
         <Navigation>
           <ListItem>
-            <LinkItem to={`${url}/day`}>Nowy dzień</LinkItem>
+            <LinkItem to={`${url}/day`}>{t('work.work.day')}</LinkItem>
           </ListItem>
           <ListItem>
-            <LinkItem to={`${url}/managment`}>Zarządzanie</LinkItem>
+            <LinkItem to={`${url}/managment`}>{t('work.work.managment')}</LinkItem>
           </ListItem>
         </Navigation>
       </NavWrapper>
       <Switch>
         <Route exact path={path}>
-          <InfoElement>wybierz sekcje</InfoElement>
+          <InfoElement>{t('work.work.info')}</InfoElement>
         </Route>
         <Route path={`${path}/:topicId`}>
           <Topic />
@@ -36,4 +38,4 @@ const Work = () => {
   );
 };
 
-export default Work;
+export default withTranslation()(Work);

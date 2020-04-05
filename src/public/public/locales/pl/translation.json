@@ -1,0 +1,67 @@
+{
+  "title": "Archstraw PL",
+  "main": {
+    "title": "Strona główna",
+    "section1": "Funkcjonalności",
+    "article1": "Pracownik:",
+    "article1elements": [
+      "dodawnie",
+      "usuwanie",
+      "edytowanie",
+      "archiwizowanie",
+      "wyszukiwanie"
+    ],
+    "article2": "Dzień roboczy",
+    "article2elements": [
+      "dodawanie pracowanika",
+      "stawka dnia, z łubianki",
+      "data dnia pracy",
+      "aktualizowanie stanu łubianek pracownika, możliwość tylko dodawania",
+      "czas pracy, początek koniec"
+    ],
+    "article3": "Wyszukiwanie pracownika po:",
+    "article3elements": [
+      "nr. telefonu",
+      "nazwisku",
+      "dacie pracy",
+      "wynagrodzeniu dziennnym/całkowitym",
+      "ilości łubianek nazbieranych miesięcznie",
+      "przepracowanych godzinnach dziennie",
+      "przepracowanych godzinnach miesięcznie",
+      "przepracowanych godzinnach dziennie",
+      "przepracowanych godzinnach miesięcznie"
+    ],
+    "article4": "Statystyka:",
+    "article4elements": [
+      "wykres przedstawiający ilość zebranych łubianek dziennie",
+      "wykres przedstawiający ilość pieniędzy zapłaconych pracownikom danego aktualnego dnia",
+      "wykres przedstawiający wydajność pracowników, stosunek liczby pracowników do nazbieranych łubianek"
+    ]
+  },
+  "work": {
+    "work": {
+      "day": "Nowy dzień",
+      "managment": "Zarządzanie",
+      "info": "Wybierz sekcje"
+    },
+    "newDay": {
+      "data": "Data",
+      "ratioTitle": "Stawka dnia",
+      "create": "Utwórz"
+    },
+    "managment": {
+      "addEmployer": "Dodaj Pracownika",
+      "currentDate": "Dzisiejszy dzień pracy to",
+      "ratio": ", a stawka dnia wynosi",
+      "currency": "zł."
+    },
+    "createEmployer": {
+      "name": "Imie",
+      "surname": "Nazwisko",
+      "phoneNumber": "Number Telefonu",
+      "confirm": "Zatwierdź",
+      "cancel": "Anuluj"
+    }
+  },
+  "statistics": "Statystyka"
+}

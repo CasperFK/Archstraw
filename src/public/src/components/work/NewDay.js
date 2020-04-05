@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import actions from '../../app/work/duck/actions';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import { withTranslation, useTranslation } from 'react-i18next';
 
 const NewDay = ({ createDay }) => {
+  const { t } = useTranslation();
+
   let history = useHistory();
   const [form, setForm] = React.useState({
     date: '',
@@ -36,7 +39,7 @@ const NewDay = ({ createDay }) => {
   return (
     <form>
       <label>
-        <span>Data</span>
+        <span>{t('work.newDay.data')}</span>
         <input
           name="date"
           value={form.date}
@@ -45,7 +48,7 @@ const NewDay = ({ createDay }) => {
         />
       </label>
       <label>
-        <span>Stawka dnia</span>
+        <span>{t('work.newDay.ratioTitle')}</span>
         <input
           name="ratio"
           value={form.ratio}
@@ -53,7 +56,7 @@ const NewDay = ({ createDay }) => {
           onChange={handleChange}
         />
       </label>
-      <button onClick={handleSubmit}>Utwórz</button>
+      <button onClick={handleSubmit}>{t('work.newDay.create')}</button>
     </form>
   );
 };
@@ -66,4 +69,4 @@ NewDay.propTypes = {
   createDay: PropTypes.func,
 }
 
-export default connect(null, mapDispatchToProps)(NewDay);
+export default connect(null, mapDispatchToProps)(withTranslation()(NewDay));

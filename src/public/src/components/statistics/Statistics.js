@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { withTranslation, useTranslation } from 'react-i18next';
 
 const Statistics = () => {
+  const { t } = useTranslation();
+
   return (
-    <div>Statystyka</div>
+    <div>{t('statistics')}</div>
   )
 }
 
-export default Statistics;
+export default withTranslation()(Statistics);

@@ -10,8 +10,12 @@ import {
   SubmitBtn,
   DataInput,
 } from './styles/style';
+import { withTranslation, useTranslation } from 'react-i18next';
 
 const Form = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
+
+  const { t } = useTranslation();
+
   const [error, setError] = React.useState(null);
   const [form, setForm] = React.useState({
     login: '',
@@ -38,10 +42,11 @@ const Form = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
     fetch('http://localhost:3000/api/auth/sign-in', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/js',
+        'Content-Type': 'application/json',
       },
-      body: form,
+      body: JSON.stringify(form),
     })
+      .then(res => res.json())
       .then((data) => {
         console.log('Success:', data);
       })
@@ -55,7 +60,7 @@ const Form = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
       <PageTitle>Panel logowania</PageTitle>
       {error && <ErrorMessage text={error} />}
       <LoginPart>
-        <LoginInputTitle>Login:</LoginInputTitle>
+        <LoginInputTitle>{t('work.signInPanel.login')}</LoginInputTitle>
         <DataInput
           name="login"
           value={form.login}
@@ -65,7 +70,7 @@ const Form = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
         />
       </LoginPart>
       <LoginPart>
-        <LoginInputTitle>Hasło:</LoginInputTitle>
+        <LoginInputTitle>{t('work.signInPanel.password')}</LoginInputTitle>
         <DataInput
           name="password"
           value={form.password}
@@ -74,7 +79,7 @@ const Form = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
           placeholder="hasło"
         />
       </LoginPart>
-      <SubmitBtn onClick={handleSubmit}>zaloguj</SubmitBtn>
+      <SubmitBtn onClick={handleSubmit}>{t('work.signInPanel.accept')}</SubmitBtn>
     </StyledForm>
   );
 };
@@ -84,4 +89,5 @@ const mapDispatchToProps = dispatch => ({
   changeIncorrect: () => dispatch(actions.changeIncorrect()),
 });
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(null, mapDispatchToProps)(withTranslation()(Form));
+

@@ -1,22 +1,28 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { Users } from '../Users';
+import { Body, Controller, Get } from '@nestjs/common';
+import { SigninService } from './signin.service';
+import { UserModel } from '../../users/UserModel';
 
+interface LoginAnswear {
+  status: string;
+  data: {
+    firstName: string;
+    lastName: string;
+    role: string;
+  };
+}
 @Controller('/api/auth/sign-in')
 export class SignInController {
-  @Post()
-  getUser(@Body() user: {login: string, password: string}) {
-    const {login, password } = user;
-    const statusFalse = false;
-    for (const el of Users) {
-      if (el.login === login && el.password === password) {
-        return {
-          status: true,
-          login,
-        };
-      }
-    }
+  constructor(private signin: SigninService) {}
+  @Get()
+  async login(@Body() user: UserModel): Promise<LoginAnswear> {
+    const odp = await this.signin.findOne(user);
     return {
-      status: statusFalse,
+      status: 'ok',
+      data: {
+        firstName: odp.firstName,
+        lastName: odp.lastName,
+        role: 'admin',
+      },
     };
   }
 }

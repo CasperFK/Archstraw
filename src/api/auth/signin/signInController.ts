@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { Users } from '../Users';
 
-@Controller('api/auth/sign-in')
+@Controller('/api/auth/sign-in')
 export class SignInController {
   @Post()
   getUser(@Body() user: {login: string, password: string}) {

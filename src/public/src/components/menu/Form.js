@@ -57,10 +57,10 @@ const Form = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
 
   return (
     <StyledForm>
-      <PageTitle>Panel logowania</PageTitle>
+      <PageTitle>{t('signInPanel.loginPanel')}</PageTitle>
       {error && <ErrorMessage text={error} />}
       <LoginPart>
-        <LoginInputTitle>{t('work.signInPanel.login')}</LoginInputTitle>
+        <LoginInputTitle>{t('signInPanel.login')}</LoginInputTitle>
         <DataInput
           name="login"
           value={form.login}
@@ -70,7 +70,7 @@ const Form = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
         />
       </LoginPart>
       <LoginPart>
-        <LoginInputTitle>{t('work.signInPanel.password')}</LoginInputTitle>
+        <LoginInputTitle>{t('signInPanel.password')}</LoginInputTitle>
         <DataInput
           name="password"
           value={form.password}
@@ -79,7 +79,7 @@ const Form = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
           placeholder="hasło"
         />
       </LoginPart>
-      <SubmitBtn onClick={handleSubmit}>{t('work.signInPanel.accept')}</SubmitBtn>
+      <SubmitBtn onClick={handleSubmit}>{t('signInPanel.accept')}</SubmitBtn>
     </StyledForm>
   );
 };

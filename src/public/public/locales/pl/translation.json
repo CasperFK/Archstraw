@@ -63,5 +63,11 @@
       "cancel": "Anuluj"
     }
   },
-  "statistics": "Statystyka"
+  "statistics": "Statystyka",
+  "signInPanel": {
+    "loginPanel": "Panel logowania",
+    "login": "Login:",
+    "password": "Hasło",
+    "accept": "Zaloguj"
+  }
 }

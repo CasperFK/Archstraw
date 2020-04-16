@@ -9,7 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     ApiModule,
     MongooseModule.forRoot(
       'mongodb+srv://duzyD20Brot9911her32M9710:TD8EIphNzYh0ZNzb@cluster0archstraw-fxmmt.mongodb.net/users?retryWrites=true&w=majority',
-      { useNewUrlParser: true, useUnifiedTopology: true, connectionName: 'users' },
+      { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, connectionName: 'users' },
     ),
   ],
   controllers: [AppController],

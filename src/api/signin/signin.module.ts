@@ -3,11 +3,11 @@ import { SigninController } from './signin.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from '../../schemas/user.schema';
 import { SigninService } from './signin.service';
+import { UsersModule } from '../users/users.module';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{name: 'User', schema: UserSchema}], 'users'),
-  ],
+  imports: [UsersModule],
   controllers: [SigninController],
   providers: [SigninService],
 })

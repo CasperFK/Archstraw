@@ -1,6 +1,6 @@
 import { Body, Controller, Get } from '@nestjs/common';
 import { SigninService } from './signin.service';
-import { UserModel } from '../../users/UserModel';
+import { UserModel } from '../users/UserModel';
 
 interface LoginAnswear {
   status: string;
@@ -10,8 +10,8 @@ interface LoginAnswear {
     role: string;
   };
 }
-@Controller('/api/auth/sign-in')
-export class SignInController {
+@Controller('/api/sign-in')
+export class SigninController {
   constructor(private signin: SigninService) {}
   @Get()
   async login(@Body() user: UserModel): Promise<LoginAnswear> {

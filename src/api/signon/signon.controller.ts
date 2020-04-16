@@ -1,9 +1,9 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { SignonService } from './signon.service';
-import { UserModel } from '../../users/UserModel';
+import { UserModel } from '../users/UserModel';
 
-@Controller('api/auth/sign-on')
-export class SignOnController {
+@Controller('api/sign-on')
+export class SignonController {
   constructor( private signon: SignonService) {}
 
   // @Post()

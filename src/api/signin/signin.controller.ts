@@ -1,39 +1,34 @@
 import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
-import { UserModel } from '../users/UserModel';
 import { UsersService } from '../users/users.service';
-import { AuthGuard } from '@nestjs/passport';
+import { LocalAuthGuard } from '../auth/local-auth-guard';
+import { AuthService } from '../auth/auth.service';
+import { JwtAuthGuard } from '../auth/jwt-auth/jwt-auth.guard';
+import { JwtRefreshAuthGuard } from '../auth/jwt-refresh-auth/jwt-refresh-auth.guard';
+import { JwtRefreshAuthService } from '../auth/jwt-refresh-auth/jwt-refresh-auth.service';
 
-interface LoginAnswear {
-  status: string;
-  data: {
-    firstName: string;
-    lastName: string;
-    role: string;
-  };
-}
 @Controller('/api/sign-in')
 export class SigninController {
-  constructor(private userService: UsersService) {}
-  // @Get()
-  // async login(@Body() user: UserModel): Promise<any> {
-  //   const odp = await this.userService.findOne(user.email);
-  //   if (odp && odp.password === user.password) {
-  //     return {
-  //       status: 'ok',
-  //       data: {
-  //         firstName: odp.firstName,
-  //         lastName: odp.lastName,
-  //         role: 'admin',
-  //       },
-  //     };
-  //   } else {
-  //     return 'Taki użytkownik nie isnieje';
-  //   }
-  // }
+  constructor(
+    private userService: UsersService,
+    private authService: AuthService,
+    private jwtRefreshAuthService: JwtRefreshAuthService,
+    ) {}
 
-  @UseGuards(AuthGuard('local'))
+  @UseGuards(LocalAuthGuard)
   @Post()
-  async login2(@Body() req) {
-    return req;
+  async login(@Body() body, @Request() req) {
+    return this.authService.login(body);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  getProfile(@Request() req) {
+    return req.user;
+  }
+
+  @UseGuards(JwtRefreshAuthGuard)
+  @Get('token')
+  async getRefreshToken(@Request() req) {
+    return await this.jwtRefreshAuthService.getRefreshToken(req.headers.authorization);
   }
 }

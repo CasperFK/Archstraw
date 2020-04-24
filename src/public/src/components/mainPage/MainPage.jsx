@@ -15,28 +15,28 @@ const MainPage = () => {
           <Features>
             {t('main.article1')}
             {t('main.article1elements', { returnObjects: true }).map(el =>
-              <ListItem>{el}</ListItem>)}
+              <ListItem key={el}>{el}</ListItem>)}
           </Features>
         </ListItem>
         <ListItem>
           <Features>
             {t('main.article2')}
             {t('main.article2elements', { returnObjects: true }).map(el =>
-              <ListItem>{el}</ListItem>)}
+              <ListItem key={el}>{el}</ListItem>)}
           </Features>
         </ListItem>
         <ListItem>
           <Features>
             {t('main.article3')}
             {t('main.article3elements', { returnObjects: true }).map(el =>
-              <ListItem>{el}</ListItem>)}
+              <ListItem key={el}>{el}</ListItem>)}
           </Features>
         </ListItem>
         <ListItem>
           <Features>
             {t('main.article4')}
-            {t('main.article4elements', { returnObjects: true }).map(item =>
-              <ListItem>{item}</ListItem>)}
+            {t('main.article4elements', { returnObjects: true }).map(el =>
+              <ListItem key={el}>{el}</ListItem>)}
           </Features>
         </ListItem>
       </Features>

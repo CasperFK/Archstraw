@@ -17,7 +17,7 @@ export const WrapperLabel = styled.label`
 `;
 
 export const FieldTitle = styled.span`
-  display:block;
+  display: block;
   text-align: center;
   padding: 3px 0;
 `;
@@ -34,6 +34,7 @@ export const Btn = styled.button`
   padding: 5px 0;
   background-color: #ffffff;
   border: 1px solid black;
+  max-height: 40px;
 `;
 
 export const CurrentDay = styled.div`
@@ -43,13 +44,16 @@ export const CurrentDay = styled.div`
 
 export const AddEmployer = styled.button`
   padding: 5px;
-  width: 130px;
-  text-align:center;
+  width: ${props => props.fullWidth ? 'calc(100% - 15px)' : '130px'};
+  text-align: center;
   border: 1px solid black;
   background-color: #ffffff;
+  max-height: 40px;
+  margin: 10px 10px;
 `;
 
 export const Title = styled.h1`
+  text-align: center;
   margin: 10px 0;
   font-size: 20px;
 `;
@@ -83,3 +87,25 @@ export const LinkItem = styled(Link)`
   text-decoration: none;
   color: black;
 `;
+
+export const ChooseFromSelect = styled.h2`
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+`;
+
+export const OptionContainer = styled.select`
+  padding: 5px 5px;
+  background-color: #fff;
+`;
+
+export const Container = styled.div`
+  justify-content: ${props => props.flex ? 'center' : 'flex-start'}; 
+  margin: ${props => props.special ? "20px" : "0"} 0;
+  display: ${props => props.flex ? 'flex' : 'block'};
+`;
+
+export const FormContainer = styled.form`
+  padding: 10px;
+`

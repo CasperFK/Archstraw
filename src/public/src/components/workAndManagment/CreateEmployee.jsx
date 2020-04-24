@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withTranslation, useTranslation } from 'react-i18next';
+
+import { sendNewEmployess } from '../../../apiCalls';
+import actions from '../../app/work/duck/actions';
 import {
   WrapperForm,
   WrapperLabel,
@@ -9,36 +13,53 @@ import {
   FieldInput,
   Btn,
 } from './styles/style';
-import actions from '../../app/work/duck/actions';
-import { withTranslation, useTranslation } from 'react-i18next';
 
-const Create = ({ handleChange, ratio, createEmployer, date, addEmployer, listOfDays }) => {
+const CreateEmployee = ({ handleChange, createEmployer, date }) => {
   const { t } = useTranslation();
   let history = useHistory();
+
+  const now = new Date();
+
+  const currentTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+
+  const [error, setError] = React.useState(false);
   const [form, setForm] = React.useState({
     name: '',
     surname: '',
     phoneNumber: '',
-    startWork: date,
+    startWork: currentTime,
+    endWork: '',
     state: 0,
-    actualRatio: ratio,
   });
-  const checkCurrentDayAndSearchingDay = () => {
-    const data = [...listOfDays];
-    data.forEach(day => day.date === date ? day.employes.push(form) : {});
-    return data;
-  }
-  const handleClickAccept = e => {
+  const handleClickAccept = async e => {
+    const { name, surname, phoneNumber, startWork, endWork, state} = form;
     e.preventDefault();
-    createEmployer({
-      name: form.name,
-      surname: form.surname,
-      phoneNumber: form.phoneNumber,
-      startWork: form.date,
-      state: form.state,
-      actualRatio: form.actualRatio,
-    });
-    addEmployer({ listOfDays: checkCurrentDayAndSearchingDay() });
+    if(name !== '' && surname !== '') {
+      const newEmployesId = await sendNewEmployess({
+        name,
+        surname,
+        phoneNumber,
+        startWork,
+        endWork,
+        state,
+        date
+      });
+
+      if(newEmployesId) {
+        createEmployer({
+          id: newEmployesId,
+          name,
+          surname,
+          phoneNumber,
+          startWork,
+          endWork,
+          state,
+        });
+      }
+    } else {
+      setError(true);
+      return;
+    }
     history.push('/work/managment/');
   };
   const handleClick = e => {
@@ -47,8 +68,9 @@ const Create = ({ handleChange, ratio, createEmployer, date, addEmployer, listOf
   };
   return (
     <WrapperForm>
+      {error ? <span style={{color: 'red', display: 'block'}}>{t('work.createEmployer.error')}</span> : null}
       <WrapperLabel>
-        <FieldTitle>Imie</FieldTitle>
+        <FieldTitle>{t('work.createEmployer.name')}</FieldTitle>
         <FieldInput
           name="name"
           value={form.name}
@@ -57,7 +79,7 @@ const Create = ({ handleChange, ratio, createEmployer, date, addEmployer, listOf
         />
       </WrapperLabel>
       <WrapperLabel>
-        <FieldTitle>Nazwisko</FieldTitle>
+        <FieldTitle>{t('work.createEmployer.surname')}</FieldTitle>
         <FieldInput
           name="surname"
           value={form.surname}
@@ -66,7 +88,7 @@ const Create = ({ handleChange, ratio, createEmployer, date, addEmployer, listOf
         />
       </WrapperLabel>
       <WrapperLabel>
-        <FieldTitle>Telefon</FieldTitle>
+        <FieldTitle>{t('work.createEmployer.phoneNumber')}</FieldTitle>
         <FieldInput
           name="phoneNumber"
           value={form.phoneNumber}
@@ -86,18 +108,14 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  ratio: state.dayOfWork.ratio,
   date: state.dayOfWork.date,
   listOfDays: state.dayOfWork.listOfDays,
 });
 
-Create.propTypes = {
+CreateEmployee.propTypes = {
   handleChange: PropTypes.func,
   createEmployer: PropTypes.func,
-  addEmployer: PropTypes.func,
-  ratio: PropTypes.number,
   date: PropTypes.string,
-  listOfDays: PropTypes.array,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Create));
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(CreateEmployee));

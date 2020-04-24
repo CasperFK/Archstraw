@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.js';
+import App from './App.jsx';
 import { Provider } from 'react-redux';
 import store from './store';
 import './i18n';

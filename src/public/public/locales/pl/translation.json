@@ -47,20 +47,25 @@
     "newDay": {
       "data": "Data",
       "ratioTitle": "Stawka dnia",
-      "create": "Utwórz"
+      "create": "Utwórz",
+      "error": "Ustaw stawke dnia inną niż zero"
     },
     "managment": {
       "addEmployer": "Dodaj Pracownika",
       "currentDate": "Dzisiejszy dzień pracy to",
       "ratio": ", a stawka dnia wynosi",
-      "currency": "zł."
+      "currency": "zł.",
+      "chooseFromSelect": "Lub wybierz pracownika z listy.",
+      "accept": "Zatwierdź",
+      "end": "Zakończ dzień"
     },
     "createEmployer": {
       "name": "Imie",
       "surname": "Nazwisko",
       "phoneNumber": "Number Telefonu",
       "confirm": "Zatwierdź",
-      "cancel": "Anuluj"
+      "cancel": "Anuluj",
+      "error": "Wypełnij wszystkie pola!"
     }
   },
   "statistics": "Statystyka",
@@ -69,5 +74,11 @@
     "login": "Login:",
     "password": "Hasło",
     "accept": "Zaloguj"
+  },
+  "menu": {
+    "start": "Strona główna",
+    "workDesk": "Panel pracy",
+    "statistics": "Statystyka",
+    "logout": "Wyloguj"
   }
 }

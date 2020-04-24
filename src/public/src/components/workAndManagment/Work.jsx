@@ -1,4 +1,7 @@
 import React from 'react';
+import { withTranslation, useTranslation } from 'react-i18next';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import Topic from './Topic';
 import {
   Wrapper,
   NavWrapper,
@@ -7,13 +10,10 @@ import {
   LinkItem,
   InfoElement,
 } from './styles/style';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import Topic from './Topic';
-import { withTranslation, useTranslation } from 'react-i18next';
 
 const Work = () => {
   const { t } = useTranslation();
-  let { path, url } = useRouteMatch();
+  const { path, url } = useRouteMatch();
   return (
     <Wrapper>
       <NavWrapper>

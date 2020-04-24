@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import actions from '../../app/signIn/duck/actions';
 import MainPage from '../mainPage/MainPage';
 import Statistics from '../statistics/Statistics';
-import Work from '../work/Work';
+import Work from '../workAndManagment/Work';
 import {
   Wrapper,
   Navigation,
@@ -13,25 +14,29 @@ import {
   StyledLink,
   LogoutBtn,
 } from './styles/style';
+import { useTranslation } from 'react-i18next';
 
-const MenuApp = ({ changeIncorrect }) => {
+const Menu = ({ changeIncorrect }) => {
+  const { t } = useTranslation();
   const handleClick = e => {
     e.preventDefault();
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('refreshToken');
     changeIncorrect();
   };
   return (
-    <Router>
+     <Router>
       <Wrapper>
         <Navigation>
           <ListWrapper>
             <ListItem>
-              <StyledLink to="/">Strona główna</StyledLink>
+              <StyledLink to="/">{t('menu.start')}</StyledLink>
             </ListItem>
             <ListItem>
-              <StyledLink to="/work">Panel pracy</StyledLink>
+              <StyledLink to="/work">{t('menu.workDesk')}</StyledLink>
             </ListItem>
             <ListItem>
-              <StyledLink to="/statistics">Statystyka</StyledLink>
+              <StyledLink to="/statistics">{t('menu.statistics')}</StyledLink>
             </ListItem>
           </ListWrapper>
         </Navigation>
@@ -48,15 +53,19 @@ const MenuApp = ({ changeIncorrect }) => {
           </Route>
         </Switch>
         <LogoutBtn onClick={handleClick}>
-          <StyledLink to="/">Wyloguj</StyledLink>
+          <StyledLink to="/">{t('menu.logout')}</StyledLink>
         </LogoutBtn>
       </Wrapper>
     </Router>
   );
 };
 
+Menu.propTypes = {
+  changeIncorrect: PropTypes.func.isRequired,
+}
+
 const mapDispatchToProps = dispatch => ({
   changeIncorrect: () => dispatch(actions.changeIncorrect()),
 });
 
-export default connect(null, mapDispatchToProps)(MenuApp);
+export default connect(null, mapDispatchToProps)(Menu);

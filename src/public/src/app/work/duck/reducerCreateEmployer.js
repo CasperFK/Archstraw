@@ -1,25 +1,22 @@
 import types from './types';
 
 const INITIAL_STATE = {
-  name: '',
-  surname: '',
-  phoneNumber: '',
-  startWork: '',
-  state: 0,
-  actualRatio: 1,
+  employess: []
 }
 
 const createNewEmployer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.ADD_EMPLOYER:
       return {
-        ...state,
-        name: action.employer.name,
-        surname: action.employer.surname,
-        phoneNumber: action.employer.phoneNumber,
-        startWork: action.employer.startWork,
-        state: action.employer.state,
-        actualRatio: action.employer.actualRatio,
+        employess: [...state.employess, {
+          id: action.employer.id,
+          name: action.employer.name,
+          surname: action.employer.surname,
+          phoneNumber: action.employer.phoneNumber,
+          startWork: action.employer.startWork,
+          endWork: action.employer.endWork,
+          state: action.employer.state,
+        }]
       }
     default:
       return state;

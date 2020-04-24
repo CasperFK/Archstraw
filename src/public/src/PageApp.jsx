@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledPageApp = styled.h1`
   background-color: #282c43;
@@ -12,6 +13,13 @@ const StyledPageApp = styled.h1`
   color: white;
   font-family: Arial;
 `;
-export const PageApp = (props) => {
-  return <StyledPageApp>{props.title}</StyledPageApp>;
+
+const PageApp = ({ title }) => (
+  <StyledPageApp>{title}</StyledPageApp>
+);
+
+PageApp.propTypes = {
+  title: PropTypes.string.isRequired,
 };
+
+export default PageApp;

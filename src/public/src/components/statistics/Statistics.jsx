@@ -6,7 +6,7 @@ const Statistics = () => {
 
   return (
     <div>{t('statistics')}</div>
-  )
-}
+  );
+};
 
 export default withTranslation()(Statistics);

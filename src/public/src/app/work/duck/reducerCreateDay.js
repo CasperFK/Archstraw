@@ -2,8 +2,7 @@ import types from './types';
 
 const INITIAL_STATE = {
   date: '',
-  ratio: 1,
-  listOfDays: [],
+  ratio: 0,
 };
 
 const dayService = (state = INITIAL_STATE, action) => {
@@ -13,17 +12,7 @@ const dayService = (state = INITIAL_STATE, action) => {
         ...state,
         date: action.value.date,
         ratio: action.value.ratio,
-        listOfDays: state.listOfDays.concat({
-          date: action.value.date,
-          ratio: action.value.ratio,
-          employes: [],
-        }),
       };
-    case types.ADD_EMPLOYER_TO_DAY:
-      return {
-        ...state,
-        listOfDays: action.employer.listOfDays,
-      }
     default:
       return state;
   }

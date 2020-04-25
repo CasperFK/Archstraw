@@ -1,30 +1,16 @@
 import * as mongoose from 'mongoose';
 
 export const WorkerSchema = new mongoose.Schema({
-  firstName: {
+  name: {
     type: String,
     required: true,
   },
-  surName: {
+  surname: {
     type: String,
-    default: ' ',
+    default: '',
   },
-  phone: {
+  phoneNumber: {
     type: String,
-    default: ' ',
-  },
-  totalCollectedBasketsOfStrawberries: {
-    type: Number,
-    default: 0,
-  },
-  fullSalary: {
-    value: {
-      type: Number,
-      default: 0,
-    },
-    currency: {
-      type: String,
-      default: 'PLN',
-    },
+    default: '',
   },
 });

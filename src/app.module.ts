@@ -11,6 +11,8 @@ import { MongooseModule } from '@nestjs/mongoose';
       'mongodb+srv://duzyD20Brot9911her32M9710:TD8EIphNzYh0ZNzb@cluster0archstraw-fxmmt.mongodb.net/users?retryWrites=true&w=majority',
       { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, connectionName: 'users' },
     ),
+    MongooseModule.forRoot('mongodb+srv://duzyD20Brot9911her32M9710:TD8EIphNzYh0ZNzb@cluster0archstraw-fxmmt.mongodb.net/work?retryWrites=true&w=majority',
+      { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, connectionName: 'work' },)
   ],
   controllers: [AppController],
   providers: [AppService],

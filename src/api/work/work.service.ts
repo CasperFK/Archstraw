@@ -23,8 +23,8 @@ export class WorkService {
     const day = await this.workDayModel.findOne({date: workDay.date});
     if (!day) {
       const newWorkDay = new this.workDayModel(workDay);
-      await newWorkDay.save();
-      return true;
+      const answer = await newWorkDay.save();
+      return answer;
     }
     return day;
   }

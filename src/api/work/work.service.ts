@@ -20,9 +20,13 @@ export class WorkService {
   }
 
   async createWorkDay(workDay: WorkDayModel): Promise<any> {
-    const newWorkDay = new this.workDayModel(workDay);
-    const answer = await newWorkDay.save();
-    return answer;
+    const day = await this.workDayModel.findOne({date: workDay.date});
+    if (!day) {
+      const newWorkDay = new this.workDayModel(workDay);
+      await newWorkDay.save();
+      return true;
+    }
+    return day;
   }
 
   async addWorkerToWorkDay(worker: WorkerModel, thisWorkDay: string): Promise<any> {

@@ -5,17 +5,18 @@ const INITIAL_STATE = {
 }
 
 const createNewEmployer = (state = INITIAL_STATE, action) => {
+  const { id, name, surname, phoneNumber, startWork, endWork } = action;
   switch (action.type) {
-    case types.ADD_EMPLOYER:
+    case types.ADD_EMPLOYEE:
       return {
         employess: [...state.employess, {
-          id: action.employer.id,
-          name: action.employer.name,
-          surname: action.employer.surname,
-          phoneNumber: action.employer.phoneNumber,
-          startWork: action.employer.startWork,
-          endWork: action.employer.endWork,
-          state: action.employer.state,
+          id,
+          name,
+          surname,
+          phoneNumber,
+          startWork,
+          endWork,
+          state: action.employee.state,
         }]
       }
     default:

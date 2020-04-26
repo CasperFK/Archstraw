@@ -6,6 +6,7 @@ const rootReducer = combineReducers({
   signIn: changeFlagSignInReducer,
   dayOfWork: methods.dayService,
   employer: methods.createNewEmployer,
+  employee: methods.getPermanentEmployee,
 });
 
 export default rootReducer;

@@ -26,6 +26,7 @@ const Work = () => {
           </ListItem>
         </Navigation>
       </NavWrapper>
+
       <Switch>
         <Route exact path={path}>
           <InfoElement>{t('work.work.info')}</InfoElement>
@@ -34,6 +35,7 @@ const Work = () => {
           <Topic />
         </Route>
       </Switch>
+
     </Wrapper>
   );
 };

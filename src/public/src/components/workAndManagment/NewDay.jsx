@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
 
-import { sendNewDay } from '../../../apiCalls';
+import { sendNewDay, getListOfEmployee } from '../../../apiCalls';
 import actions from '../../app/work/duck/actions';
 import {
   Title,
@@ -14,7 +14,9 @@ import {
   FieldInput
 } from './styles/style';
 
-const NewDay = ({ createDay }) => {
+const regex = /[-+]?(?:\d*\.?\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?$/;
+
+const NewDay = ({ createDay, getPermanentEmployeeFromApi }) => {
   const { t } = useTranslation();
 
   const now = new Date();
@@ -33,15 +35,25 @@ const NewDay = ({ createDay }) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
+    let validateValue;
+    if (value.match(regex)) {
+      validateValue = value;
+    } else {
+      validateValue = '';
+    }
     setForm({
       ...form,
-      [name]: value,
+      [name]: validateValue,
     });
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (form.date !== '' && form.ratio !== 0) {
+    if (form.date !== '' && form.ratio !== 0 && form.ratio.match('.')) {
+      if(form.ratio[0] === 0) {
+        setError(true);
+        return;
+      }
       await sendNewDay({
         ...form,
         employess: [],
@@ -56,6 +68,8 @@ const NewDay = ({ createDay }) => {
       setError(true);
       return;
     }
+    const employee = await getListOfEmployee();
+    getPermanentEmployeeFromApi(employee);
     history.push('/work/managment');
   };
 
@@ -71,7 +85,7 @@ const NewDay = ({ createDay }) => {
         <FieldInput
           name="ratio"
           value={form.ratio}
-          type="number"
+          type="string"
           onChange={handleChange}
         />
       </Container>
@@ -83,10 +97,12 @@ const NewDay = ({ createDay }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  getPermanentEmployeeFromApi: (value) => dispatch(actions.getPermanentEmployeeFromApi(value)),
   createDay: (value) => dispatch(actions.createDay(value)),
 });
 
 NewDay.propTypes = {
+  getPermanentEmployeeFromApi: PropTypes.func.isRequired,
   createDay: PropTypes.func.isRequired,
 };
 

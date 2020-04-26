@@ -48,7 +48,7 @@
       "data": "Data",
       "ratioTitle": "Stawka dnia",
       "create": "Utwórz",
-      "error": "Ustaw stawke dnia inną niż zero"
+      "error": "Nie poprawny format."
     },
     "managment": {
       "addEmployer": "Dodaj Pracownika",

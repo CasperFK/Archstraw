@@ -1,4 +1,4 @@
-import { URL, login, newDay, newEmployess } from '../constants';
+import { URL, login, newDay, newEmployess, getEmployee } from '../constants';
 
 export const sendLoginData = (form) =>
   fetch(`${URL}/${login}`, {
@@ -23,6 +23,7 @@ export const sendNewDay = (form) =>
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
     },
     body: JSON.stringify(form),
   }).catch((err) => console.error(err));
@@ -32,9 +33,20 @@ export const sendNewEmployess = (form) =>
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
     },
     body: JSON.stringify(form),
   })
     .then(res => res.json())
     .catch((err) => console.error(err));
+
+export const getListOfEmployee = () =>
+  fetch(`${URL}/${getEmployee}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+    },
+  })
+    .then(res => res.json());
 

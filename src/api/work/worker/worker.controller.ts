@@ -11,6 +11,7 @@ interface Worker {
   endWork?: string,
   state?: number,
   date?: string,
+  _id?: string,
 }
 
 @Controller('/api/')
@@ -32,5 +33,17 @@ export class WorkerController {
   @Get('get-employee')
   async getWorkers() : Promise<WorkerModel[]> {
     return await this.workService.getAllWorkers();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('new-employee-select')
+  async addWorkerToWorkDay(@Body() body: Worker) : Promise<boolean> {
+    try {
+      const {date, phoneNumber, ...worker}  = body;
+      await this.workService.addWorkerToWorkDay(worker as WorkerModel, date);
+      return true;
+    } catch (e) {
+      return e;
+    }
   }
 }

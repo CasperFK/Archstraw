@@ -13,13 +13,13 @@ interface Worker {
   date?: string,
 }
 
-@Controller('/api/workers')
+@Controller('/api/')
 export class WorkerController {
   constructor(private workService: WorkService) {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post()
+  @Post('new-employee')
   async createWorker(@Body() body: WorkerModel) : Promise<string> {
     const {startWork, endWork, state, date, ...worker} : WorkerModel = body;
     const _id = await this.workService.createWorker(worker as WorkerModel);
@@ -29,7 +29,7 @@ export class WorkerController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get()
+  @Get('get-employee')
   async getWorkers() : Promise<WorkerModel[]> {
     return await this.workService.getAllWorkers();
   }

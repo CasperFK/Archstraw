@@ -21,13 +21,13 @@ interface WorkDay {
   employees: Worker[],
 }
 
-@Controller('/api/work-day/')
+@Controller('/api/')
 export class WorkDayController {
   constructor(private workService: WorkService) {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post()
+  @Post('new-day')
   async createWorkDay(@Body() workDay: WorkDayModel) : Promise<string> {
     const day = await this.workService.createWorkDay(workDay);
     return day;

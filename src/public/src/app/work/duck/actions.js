@@ -6,18 +6,19 @@ const createDay = value => ({
 });
 
 const addEmployer = employee => ({
-  type: types.ADD_EMPLOYER,
+  type: types.ADD_EMPLOYEE,
   employee,
 });
-
-const addEmployerToDay = employee => ({
-  type: types.ADD_EMPLOYER_TO_DAY,
-  employee,
-})
 
 const getPermanentEmployeeFromApi = employee => ({
   type: types.GET_PERMANENT_EMPLOYEE,
   employee,
 })
 
-export default { createDay, addEmployer, addEmployerToDay, getPermanentEmployeeFromApi };
+const updateEmployeeState = (employee, condition) => ({
+  type: types.UPDATE_EMPLOYEE,
+  employee,
+  condition,
+})
+
+export default { createDay, addEmployer, getPermanentEmployeeFromApi, updateEmployeeState };

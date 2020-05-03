@@ -5,14 +5,14 @@ import ErrorMessage from './ErrorMesage';
 import { connect } from 'react-redux';
 import actions from '../../app/signIn/duck/actions';
 import { sendLoginData } from '../../../apiCalls';
+import Input from '../common/components/Input';
 import {
   PageTitle,
-  StyledForm,
   LoginPart,
   LoginInputTitle,
-  SubmitBtn,
-  DataInput,
+  FormContainer
 } from './styles/style';
+import Button from '../common/components/Button';
 
 const LoginForm = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
   const { t } = useTranslation();
@@ -40,31 +40,29 @@ const LoginForm = ({ changeCorrect, changeIncorrect, handleChange, validate }) =
   };
 
   return (
-    <StyledForm>
+    <FormContainer>
       <PageTitle>{t('signInPanel.loginPanel')}</PageTitle>
       {error && <ErrorMessage text={error} />}
       <LoginPart>
-        <LoginInputTitle>{t('signInPanel.login')}</LoginInputTitle>
-        <DataInput
+        <Input
           name="username"
           value={form.username}
           type="text"
-          onChange={(e) => handleChange(e, setForm, form)}
+          handleChange={(e) => handleChange(e, setForm, form)}
           placeholder="login"
         />
       </LoginPart>
       <LoginPart>
-        <LoginInputTitle>{t('signInPanel.password')}</LoginInputTitle>
-        <DataInput
+        <Input
           name="password"
           value={form.password}
           type="password"
-          onChange={(e) => handleChange(e, setForm, form)}
+          handleChange={(e) => handleChange(e, setForm, form)}
           placeholder="hasło"
         />
       </LoginPart>
-      <SubmitBtn onClick={handleSubmit}>{t('signInPanel.accept')}</SubmitBtn>
-    </StyledForm>
+      <Button handleClick={handleSubmit} login text={t('signInPanel.accept')} />
+    </FormContainer>
   );
 };
 

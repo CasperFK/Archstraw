@@ -5,7 +5,7 @@ import { default as methods } from './app/work/duck';
 const rootReducer = combineReducers({
   signIn: changeFlagSignInReducer,
   dayOfWork: methods.dayService,
-  employer: methods.createNewEmployer,
+  employer: methods.employeeHandle,
   employee: methods.getPermanentEmployee,
 });
 

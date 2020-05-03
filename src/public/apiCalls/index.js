@@ -1,4 +1,4 @@
-import { URL, login, newDay, newEmployess, getEmployee } from '../constants';
+import { URL, login, newDay, newEmployess, getEmployee, newEmployeeFromSelect, updateState } from '../constants';
 
 export const sendLoginData = (form) =>
   fetch(`${URL}/${login}`, {
@@ -40,6 +40,18 @@ export const sendNewEmployess = (form) =>
     .then(res => res.json())
     .catch((err) => console.error(err));
 
+export const sendNewEmployeeFromSelect = (form) =>
+  fetch(`${URL}/${newEmployeeFromSelect}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+    },
+    body: JSON.stringify(form),
+  })
+    .then(res => res.json())
+    .catch((err) => console.error(err));
+
 export const getListOfEmployee = () =>
   fetch(`${URL}/${getEmployee}`, {
     method: 'GET',
@@ -49,4 +61,14 @@ export const getListOfEmployee = () =>
     },
   })
     .then(res => res.json());
+
+export const updateStateForEmployee = (fields) =>
+  fetch(`${URL}/${updateState}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+    },
+    body: JSON.stringify(fields),
+  });
 

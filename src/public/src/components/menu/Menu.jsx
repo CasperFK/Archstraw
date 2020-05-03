@@ -12,9 +12,9 @@ import {
   ListItem,
   ListWrapper,
   StyledLink,
-  LogoutBtn,
 } from './styles/style';
 import { useTranslation } from 'react-i18next';
+import Button from '../common/components/Button';
 
 const Menu = ({ changeIncorrect }) => {
   const { t } = useTranslation();
@@ -52,9 +52,7 @@ const Menu = ({ changeIncorrect }) => {
             <MainPage />
           </Route>
         </Switch>
-        <LogoutBtn onClick={handleClick}>
-          <StyledLink to="/">{t('menu.logout')}</StyledLink>
-        </LogoutBtn>
+        <Button logout text={t('menu.logout')} handleClick={handleClick} />
       </Wrapper>
     </Router>
   );

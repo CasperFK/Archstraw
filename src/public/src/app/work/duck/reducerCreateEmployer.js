@@ -4,24 +4,46 @@ const INITIAL_STATE = {
   employess: []
 }
 
-const createNewEmployer = (state = INITIAL_STATE, action) => {
-  const { id, name, surname, phoneNumber, startWork, endWork } = action;
+const employeeHandle = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.ADD_EMPLOYEE:
       return {
-        employess: [...state.employess, {
-          id,
-          name,
-          surname,
-          phoneNumber,
-          startWork,
-          endWork,
+        employess: [
+          ...state.employess, {
+          id: action.employee.id,
+          name: action.employee.name,
+          surname: action.employee.surname,
+          phoneNumber: action.employee.phoneNumber,
+          startWork: action.employee.startWork,
+          endWork: action.employee.endWork,
           state: action.employee.state,
         }]
+      }
+    case types.UPDATE_EMPLOYEE:
+      return {
+        employess: [
+          ...state.employess.map(employee => {
+            if(employee.id === action.employee[0].id) {
+                if (action.condition === "+") {
+                  return ({
+                      ...employee,
+                      state: employee.state+=1,
+                    })
+                  }
+                if (action.condition === "-") {
+                    return ({
+                      ...employee,
+                      state: employee.state < 1 ? 0 : employee.state-=1,
+                })
+              }
+            }
+            return employee;
+          })
+        ]
       }
     default:
       return state;
   }
 }
 
-export default createNewEmployer;
+export default employeeHandle;

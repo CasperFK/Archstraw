@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { withTranslation, useTranslation } from 'react-i18next';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import Topic from './Topic';
@@ -11,7 +13,7 @@ import {
   InfoElement,
 } from './styles/style';
 
-const Work = () => {
+const Work = ({ date }) => {
   const { t } = useTranslation();
   const { path, url } = useRouteMatch();
   return (
@@ -22,7 +24,7 @@ const Work = () => {
             <LinkItem to={`${url}/day`}>{t('work.work.day')}</LinkItem>
           </ListItem>
           <ListItem>
-            <LinkItem to={`${url}/managment`}>{t('work.work.managment')}</LinkItem>
+            <LinkItem style={{display: date ? 'block' : 'none'}} to={`${url}/managment`}>{t('work.work.managment')}</LinkItem>
           </ListItem>
         </Navigation>
       </NavWrapper>
@@ -40,4 +42,12 @@ const Work = () => {
   );
 };
 
-export default withTranslation()(Work);
+Work.propTypes = {
+  date: PropTypes.string.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+  date: state.dayOfWork.date,
+});
+
+export default connect(mapStateToProps, {})(withTranslation()(Work));

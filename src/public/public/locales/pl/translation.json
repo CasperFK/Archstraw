@@ -51,7 +51,7 @@
       "error": "Nie poprawny format."
     },
     "managment": {
-      "addEmployer": "Dodaj Pracownika",
+      "addEmployer": "Nowy pracownik",
       "currentDate": "Dzisiejszy dzień pracy to",
       "ratio": ", a stawka dnia wynosi",
       "currency": "zł.",

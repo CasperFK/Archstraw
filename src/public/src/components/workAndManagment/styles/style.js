@@ -38,6 +38,7 @@ export const Btn = styled.button`
 `;
 
 export const CurrentDay = styled.div`
+  min-height: 75vh;
   padding: 10px;
   text-align: center;
 `;
@@ -54,11 +55,12 @@ export const AddEmployer = styled.button`
 
 export const Title = styled.h1`
   text-align: center;
-  margin: 10px 0;
+  padding: 15px 0;
   font-size: 20px;
 `;
 
 export const Wrapper = styled.div`
+  min-height: 79vh;
   padding: 5px;
 `;
 
@@ -92,20 +94,49 @@ export const ChooseFromSelect = styled.h2`
   padding: 5px;
   width: 100%;
   text-align: center;
-  background-color: #fff;
 `;
 
 export const OptionContainer = styled.select`
   padding: 5px 5px;
+  margin: 0px 10px;
   background-color: #fff;
 `;
 
+export const CreateDayContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 export const Container = styled.div`
-  justify-content: ${props => props.flex ? 'center' : 'flex-start'}; 
-  margin: ${props => props.special ? "20px" : "0"} 0;
   display: ${props => props.flex ? 'flex' : 'block'};
+  margin: ${props => props.special ? "20px" : "0"} 0;
+  flex-direction: ${props => props.flex ? 'column' : 'row'}
+  align-items: ${props => props.flex ? 'center' : 'flex-start'}
 `;
 
 export const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  min-height: calc(75vh - 20px);
   padding: 10px;
-`
+`;
+
+export const EmployeeOperators = styled.button`
+  height: 40px;
+  min-width: 40px;
+  padding: 0 3px;
+  line-height: 20px;
+  font-size: ${props => props.fontV1 ? "15px"  : "20px"};
+  background-color: #fff;
+  border: 1px solid black;
+  margin: 10px;
+`;
+
+export const EmployeeNameSurname = styled.p`
+  margin: 10px;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px 0;
+  width: 130px;
+`;
+

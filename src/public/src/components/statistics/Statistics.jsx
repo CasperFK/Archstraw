@@ -5,7 +5,7 @@ const Statistics = () => {
   const { t } = useTranslation();
 
   return (
-    <div>{t('statistics')}</div>
+    <div style={{minHeight: '80vh'}}>{t('statistics')}</div>
   );
 };
 

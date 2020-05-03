@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
 
+import Button from '../common/components/Button';
 import { sendNewDay, getListOfEmployee } from '../../../apiCalls';
 import actions from '../../app/work/duck/actions';
+import SecondaryInput from '../common/components/SecondaryInput';
 import {
   Title,
-  AddEmployer,
   Container,
   FormContainer,
-  FieldInput
+  CreateDayContainer
 } from './styles/style';
 
 const regex = /[-+]?(?:\d*\.?\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?$/;
@@ -21,7 +22,7 @@ const NewDay = ({ createDay, getPermanentEmployeeFromApi }) => {
 
   const now = new Date();
 
-  const date = `${now.getDate()}/${
+  const date = `${now.getDate() < 10 ? `0${now.getDate()}` : now.getDate()}/${
     now.getMonth() < 10 ? `0${now.getMonth()}` : now.getMonth()
   }/${now.getFullYear()}`;
 
@@ -76,22 +77,20 @@ const NewDay = ({ createDay, getPermanentEmployeeFromApi }) => {
   return (
     <FormContainer>
       <Title>
-        <span>{t('work.newDay.data')}</span>
-        <p>{date}</p>
+        <span>{`${t('work.newDay.data')}: ${date}`}</span>
       </Title>
-      <Container flex>
-        <span>{t('work.newDay.ratioTitle')}</span>
-        {error ? <span style={{color: 'red', display: 'block'}}>{t('work.newDay.error')}</span> : null}
-        <FieldInput
+      <CreateDayContainer>
+        <p style={{padding: '10px 0'}}>{t('work.newDay.ratioTitle')}</p>
+        {error ? <p style={{color: 'red', display: 'block'}}>{t('work.newDay.error')}</p> : null}
+        <SecondaryInput
           name="ratio"
           value={form.ratio}
           type="string"
-          onChange={handleChange}
+          handleChange={handleChange}
+          placeholder=""
         />
-      </Container>
-      <AddEmployer fullWidth onClick={handleSubmit} type="submit">
-        {t('work.newDay.create')}
-      </AddEmployer>
+      </CreateDayContainer>
+      <Button text={t('work.newDay.create')} handleClick={handleSubmit} type="submit" />
     </FormContainer>
   );
 };

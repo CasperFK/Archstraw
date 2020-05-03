@@ -13,6 +13,9 @@ import {
   FieldInput,
   Btn,
 } from './styles/style';
+import Button from '../common/components/Button';
+import Input from '../common/components/Input';
+import SecondaryInput from '../common/components/SecondaryInput';
 
 const CreateEmployee = ({ handleChange, createEmployer, date }) => {
   const { t } = useTranslation();
@@ -71,40 +74,43 @@ const CreateEmployee = ({ handleChange, createEmployer, date }) => {
       {error ? <span style={{color: 'red', display: 'block'}}>{t('work.createEmployer.error')}</span> : null}
       <WrapperLabel>
         <FieldTitle>{t('work.createEmployer.name')}</FieldTitle>
-        <FieldInput
+        <SecondaryInput
           name="name"
           value={form.name}
-          onChange={e => handleChange(e, setForm, form)}
+          handleChange={e => handleChange(e, setForm, form)}
           type="text"
+          placeholder=""
         />
       </WrapperLabel>
       <WrapperLabel>
         <FieldTitle>{t('work.createEmployer.surname')}</FieldTitle>
-        <FieldInput
+        <SecondaryInput
           name="surname"
           value={form.surname}
-          onChange={e => handleChange(e, setForm, form)}
+          handleChange={e => handleChange(e, setForm, form)}
           type="text"
+          placeholder=""
         />
       </WrapperLabel>
       <WrapperLabel>
         <FieldTitle>{t('work.createEmployer.phoneNumber')}</FieldTitle>
-        <FieldInput
+        <SecondaryInput
           name="phoneNumber"
           value={form.phoneNumber}
-          onChange={e => handleChange(e, setForm, form)}
+          handleChange={e => handleChange(e, setForm, form)}
           type="number"
+          placeholder=""
         />
       </WrapperLabel>
-      <Btn onClick={handleClickAccept}>{t('work.createEmployer.confirm')}</Btn>
-      <Btn onClick={handleClick}>{t('work.createEmployer.cancel')}</Btn>
+      <Button handleClick={handleClickAccept} text={t('work.createEmployer.confirm')} />
+      <Button handleClick={handleClick} text={t('work.createEmployer.cancel')} />
     </WrapperForm>
   );
 };
 
 const mapDispatchToProps = dispatch => ({
-  createEmployer: employer => dispatch(actions.addEmployer(employer)),
-  addEmployer: employer => dispatch(actions.addEmployerToDay(employer))
+  createEmployer: (employer) => dispatch(actions.addEmployer(employer)),
+  addEmployer: (employer) => dispatch(actions.addEmployerToDay(employer))
 });
 
 const mapStateToProps = state => ({

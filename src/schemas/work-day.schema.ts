@@ -9,6 +9,6 @@ export const WorkDay: mongoose.Schema = new mongoose.Schema<any>({
     startWork: String,
     endWork: String,
     state: String,
-    _id: String,
+    id: String,
   }],
 })

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, Put, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/jwt-auth/jwt-auth.guard';
 import { WorkService } from '../work.service';
 import { WorkDayModel } from '../../../models/work-day.model';
@@ -31,5 +31,11 @@ export class WorkDayController {
   async createWorkDay(@Body() workDay: WorkDayModel) : Promise<string> {
     const day = await this.workService.createWorkDay(workDay);
     return day;
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('update-state')
+  async updateState(@Body() worker: {state: string, id: string, date: string}) : Promise <boolean> {
+    return await this.workService.updateWorkerStateInTheWorkDay(worker);
   }
 }

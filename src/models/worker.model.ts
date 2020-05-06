@@ -8,4 +8,5 @@ export interface WorkerModel extends Document {
   endWork?: string,
   state?: number,
   date?: string,
+  salaryStatus?: boolean,
 }

@@ -36,6 +36,12 @@ export class WorkDayController {
   @UseGuards(JwtAuthGuard)
   @Put('update-state')
   async updateState(@Body() worker: {state: string, id: string, date: string}) : Promise <boolean> {
-    return await this.workService.updateWorkerStateInTheWorkDay(worker);
+    return await this.workService.updateWorkerState(worker);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('update-salary-status')
+  async updateSalaryStatus(@Body() worker: {salaryStatus: boolean, id: string, date: string}) : Promise <any> {
+    return await this.workService.updateWorkerSalaryStatus(worker);
   }
 }

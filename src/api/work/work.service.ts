@@ -34,10 +34,16 @@ export class WorkService {
       return answer;
   }
 
-  async updateWorkerStateInTheWorkDay(worker: {state: string, id: string | number, date: string}): Promise<any> {
+  async updateWorkerState(worker: {state: string, id: string | number, date: string}): Promise<any> {
     const answer = await this.workDayModel.updateOne({date: worker.date, 'employees.id': worker.id}, { $set: {'employees.$.state': worker.state} })
     return answer;
   }
+
+  async updateWorkerSalaryStatus(worker: {salaryStatus: boolean, id: string, date: string}): Promise<any> {
+    const answer = await this.workDayModel.updateOne({date: worker.date, 'employees.id': worker.id}, { $set: {'employees.$.salaryStatus': worker.salaryStatus} })
+    return answer;
+  }
+
   async getAllWorkers(): Promise<WorkerModel[]> {
     const workers = await this.workerModel.find();
     return workers;

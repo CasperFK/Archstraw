@@ -7,6 +7,7 @@ interface Worker {
   endWork?: string,
   state?: number,
   id: string,
+  salaryStatus?: boolean,
 }
 
 export interface WorkDayModel extends Document {

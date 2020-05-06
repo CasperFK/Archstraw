@@ -10,5 +10,6 @@ export const WorkDay: mongoose.Schema = new mongoose.Schema<any>({
     endWork: String,
     state: String,
     id: String,
+    salaryStatus: Boolean,
   }],
 })

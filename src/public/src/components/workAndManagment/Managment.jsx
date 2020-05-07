@@ -62,7 +62,6 @@ const Managment = ({ date, ratio, employess, employee, createEmployer }) => {
     })
   }
 
-  // eslint-disable-next-line
   const options = employee.map(({name, surname, _id}) =>
     <option key={_id} value={_id}>{`${name} ${surname}`}</option>
   );

@@ -26,7 +26,7 @@ export const sendNewDay = (form) =>
       'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
     },
     body: JSON.stringify(form),
-  }).catch((err) => console.error(err));
+  }).then(res => res.json()).catch((err) => console.error(err));
 
 export const sendNewEmployess = (form) =>
   fetch(`${URL}/${newEmployess}`, {

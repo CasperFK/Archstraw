@@ -16,7 +16,7 @@ import {
 
 const regex = /[-+]?(?:\d*\.?\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?$/;
 
-const NewDay = ({ createDay, getPermanentEmployeeFromApi }) => {
+const NewDay = ({ createDay, getPermanentEmployeeFromApi, createEmployee }) => {
   const { t } = useTranslation();
 
   const now = new Date();
@@ -54,11 +54,30 @@ const NewDay = ({ createDay, getPermanentEmployeeFromApi }) => {
         setError(true);
         return;
       }
-      await sendNewDay({
+      const backData = await sendNewDay({
         ...form,
         employess: [],
       });
-      createDay(form);
+      if(backData === []) {
+        createDay(form);
+      } else {
+        console.log(backData);
+        createDay({
+          date: backData.date,
+          ratio: backData.ratio,
+        })
+        backData.employees.map(worker => {
+          createEmployee({
+            id: worker._id,
+            name: worker.name,
+            surname: worker.surname,
+            phoneNumber: worker.phoneNumber,
+            startWork: worker.startWork,
+            endWork: worker.endWork,
+            state: worker.state,
+          })
+        })
+      }
       setForm({
         ...form,
         date: '',
@@ -97,11 +116,13 @@ const NewDay = ({ createDay, getPermanentEmployeeFromApi }) => {
 const mapDispatchToProps = (dispatch) => ({
   getPermanentEmployeeFromApi: (value) => dispatch(actions.getPermanentEmployeeFromApi(value)),
   createDay: (value) => dispatch(actions.createDay(value)),
+  createEmployee: (employer) => dispatch(actions.addEmployer(employer)),
 });
 
 NewDay.propTypes = {
   getPermanentEmployeeFromApi: PropTypes.func,
   createDay: PropTypes.func,
+  createEmployee: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(withTranslation()(NewDay));

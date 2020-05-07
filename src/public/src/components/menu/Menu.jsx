@@ -22,6 +22,7 @@ const Menu = ({ changeIncorrect }) => {
     e.preventDefault();
     localStorage.removeItem('authToken');
     localStorage.removeItem('refreshToken');
+    window.location.href = '/';
     changeIncorrect();
   };
   return (

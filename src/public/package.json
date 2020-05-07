@@ -21,7 +21,8 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "styled-components": "^5.0.1",
-    "styled-reset": "^4.1.0"
+    "styled-reset": "^4.1.0",
+    "sweetalert2-react": "^0.8.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

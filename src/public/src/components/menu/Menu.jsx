@@ -59,7 +59,7 @@ const Menu = ({ changeIncorrect }) => {
 };
 
 Menu.propTypes = {
-  changeIncorrect: PropTypes.func.isRequired,
+  changeIncorrect: PropTypes.func,
 }
 
 const mapDispatchToProps = dispatch => ({

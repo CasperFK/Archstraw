@@ -8,16 +8,30 @@ export const PageTitle = styled.h1`
 `;
 
 export const FormContainer = styled.form`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background: linear-gradient(to top left, #4A148C, #C51162);
   background-repeat: cover;
   color: white;
-  height: calc(90vh - 60px);
   padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
+
+export const Title = styled.h1`
+    position: absolute;
+    top: 5%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+`
 
 export const LoginPart = styled.label`
   display: flex;

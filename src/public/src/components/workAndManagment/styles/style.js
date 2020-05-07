@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const EmployeeWrapper = styled.div`
+  margin: 0 auto;
+`
+
 export const WrapperForm = styled.form`
   height: 80vh;
   display: flex;
@@ -43,14 +47,18 @@ export const CurrentDay = styled.div`
   text-align: center;
 `;
 
-export const AddEmployer = styled.button`
-  padding: 5px;
-  width: ${props => props.fullWidth ? 'calc(100% - 15px)' : '130px'};
+export const SimpleButton = styled.button`
+  width: 40px;
+  height: 40px;
   text-align: center;
   border: 1px solid black;
   background-color: #ffffff;
-  max-height: 40px;
   margin: 10px 10px;
+  cursor: pointer;
+  transition: .3;
+  &:hover {
+    background-color: #f9f4f4;
+  }
 `;
 
 export const Title = styled.h1`
@@ -137,6 +145,6 @@ export const EmployeeNameSurname = styled.p`
   text-align: center;
   font-size: 16px;
   padding: 5px 0;
-  width: 130px;
+  width: 200px;
 `;
 

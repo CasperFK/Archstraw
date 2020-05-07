@@ -10,7 +10,6 @@ import actions from '../../app/work/duck/actions';
 import SecondaryInput from '../common/components/SecondaryInput';
 import {
   Title,
-  Container,
   FormContainer,
   CreateDayContainer
 } from './styles/style';
@@ -101,8 +100,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 NewDay.propTypes = {
-  getPermanentEmployeeFromApi: PropTypes.func.isRequired,
-  createDay: PropTypes.func.isRequired,
+  getPermanentEmployeeFromApi: PropTypes.func,
+  createDay: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(withTranslation()(NewDay));

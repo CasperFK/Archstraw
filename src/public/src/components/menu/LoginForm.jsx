@@ -9,8 +9,8 @@ import Input from '../common/components/Input';
 import {
   PageTitle,
   LoginPart,
-  LoginInputTitle,
-  FormContainer
+  FormContainer,
+  Title,
 } from './styles/style';
 import Button from '../common/components/Button';
 
@@ -41,6 +41,7 @@ const LoginForm = ({ changeCorrect, changeIncorrect, handleChange, validate }) =
 
   return (
     <FormContainer>
+      <Title>{t('title')}</Title>
       <PageTitle>{t('signInPanel.loginPanel')}</PageTitle>
       {error && <ErrorMessage text={error} />}
       <LoginPart>

@@ -14,6 +14,7 @@ const MainPage = ({ formFlag }) => {
 };
 
 MainPage.propTypes = {
+  setLocation: PropTypes.func,
   formFlag: PropTypes.bool.isRequired,
 }
 

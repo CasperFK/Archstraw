@@ -16,7 +16,7 @@ const App = () => {
   const { t } = useTranslation();
   return (
     <>
-      <Reset />
+      <Reset style={{boxSizing: 'border-box'}} />
       <GlobalStyles>
         <PageApp title={t('title')} />
         <MainPage />

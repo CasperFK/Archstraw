@@ -10,11 +10,8 @@ import {
   WrapperForm,
   WrapperLabel,
   FieldTitle,
-  FieldInput,
-  Btn,
 } from './styles/style';
 import Button from '../common/components/Button';
-import Input from '../common/components/Input';
 import SecondaryInput from '../common/components/SecondaryInput';
 
 const CreateEmployee = ({ handleChange, createEmployer, date }) => {

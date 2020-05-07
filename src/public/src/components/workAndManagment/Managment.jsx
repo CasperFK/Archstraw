@@ -34,11 +34,9 @@ const Managment = ({ date, ratio, employess, employee, createEmployer }) => {
 
   const handleChange = e => {
     setWorker(e.target.value);
-    console.log("dupa", e.target.value)
   }
 
   const handleClickFromSelect = () => {
-    // eslint-disable-next-line
     employee.forEach(async (option) => {
       if(option._id === worker) {
         await sendNewEmployeeFromSelect({
@@ -60,7 +58,6 @@ const Managment = ({ date, ratio, employess, employee, createEmployer }) => {
           endWork: '',
           state: 0,
         });
-        console.log("IDDDDDDDDDDDDDDDDDD", option._id)
       }
     })
   }
@@ -109,11 +106,7 @@ Managment.propTypes = {
   ratio: PropTypes.number.isRequired,
   employess: PropTypes.array,
   createEmployer: PropTypes.func,
-  employee: PropTypes.shape({
-    name: PropTypes.string,
-    surname: PropTypes.string,
-    _id: PropTypes.string,
-  })
+  employee: PropTypes.array,
 };
 
 const mapDispatchToProps = (dispatch) => ({

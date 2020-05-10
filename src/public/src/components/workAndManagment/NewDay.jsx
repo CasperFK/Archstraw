@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
 
 import Button from '../common/components/Button';
@@ -16,8 +16,14 @@ import {
 
 const regex = /[-+]?(?:\d*\.?\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?$/;
 
-const NewDay = ({ createDay, getPermanentEmployeeFromApi, createEmployee }) => {
+const NewDay = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocation }) => {
   const { t } = useTranslation();
+
+  const location = useLocation();
+
+  React.useEffect(() => {
+    setLocation(location.pathname);
+  }, location);
 
   const now = new Date();
 
@@ -61,20 +67,21 @@ const NewDay = ({ createDay, getPermanentEmployeeFromApi, createEmployee }) => {
       if(backData === []) {
         createDay(form);
       } else {
-        console.log(backData);
         createDay({
           date: backData.date,
           ratio: backData.ratio,
+          backData,
         })
         backData.employees.map(worker => {
           createEmployee({
-            id: worker._id,
+            id: worker.id,
             name: worker.name,
             surname: worker.surname,
             phoneNumber: worker.phoneNumber,
             startWork: worker.startWork,
             endWork: worker.endWork,
-            state: worker.state,
+            state: parseInt(worker.state),
+            salaryStatus: false,
           })
         })
       }
@@ -120,6 +127,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 NewDay.propTypes = {
+  setLocation: PropTypes.func,
   getPermanentEmployeeFromApi: PropTypes.func,
   createDay: PropTypes.func,
   createEmployee: PropTypes.func,

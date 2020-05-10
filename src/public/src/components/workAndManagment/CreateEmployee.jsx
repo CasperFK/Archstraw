@@ -30,6 +30,7 @@ const CreateEmployee = ({ handleChange, createEmployer, date }) => {
     startWork: currentTime,
     endWork: '',
     state: 0,
+    salaryStatus: false,
   });
   const handleClickAccept = async e => {
     const { name, surname, phoneNumber, startWork, endWork, state} = form;
@@ -42,8 +43,11 @@ const CreateEmployee = ({ handleChange, createEmployer, date }) => {
         startWork,
         endWork,
         state,
-        date
+        date,
+        salaryStatus: false,
       });
+
+      console.log(newEmployesId);
 
       if(newEmployesId) {
         createEmployer({
@@ -54,6 +58,7 @@ const CreateEmployee = ({ handleChange, createEmployer, date }) => {
           startWork,
           endWork,
           state,
+          salaryStatus: false,
         });
       }
     } else {

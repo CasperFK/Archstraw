@@ -18,6 +18,7 @@ import Button from '../common/components/Button';
 
 const Menu = ({ changeIncorrect }) => {
   const { t } = useTranslation();
+  const [pathname, setPathname] = React.useState('/');
   const handleClick = e => {
     e.preventDefault();
     localStorage.removeItem('authToken');
@@ -25,32 +26,33 @@ const Menu = ({ changeIncorrect }) => {
     window.location.href = '/';
     changeIncorrect();
   };
+
   return (
      <Router>
       <Wrapper>
         <Navigation>
           <ListWrapper>
-            <ListItem>
-              <StyledLink to="/">{t('menu.start')}</StyledLink>
+            <ListItem flag={pathname === '/'}>
+              <StyledLink flag={pathname === '/'} to="/">{t('menu.start')}</StyledLink>
             </ListItem>
-            <ListItem>
-              <StyledLink to="/work">{t('menu.workDesk')}</StyledLink>
+            <ListItem flag={pathname.includes('/work')}>
+              <StyledLink flag={pathname.includes('/work')} to="/work">{t('menu.workDesk')}</StyledLink>
             </ListItem>
-            <ListItem>
-              <StyledLink to="/statistics">{t('menu.statistics')}</StyledLink>
+            <ListItem flag={pathname === '/statistics'}>
+              <StyledLink flag={pathname === '/statistics'} to="/statistics">{t('menu.statistics')}</StyledLink>
             </ListItem>
           </ListWrapper>
         </Navigation>
 
         <Switch>
           <Route path="/work">
-            <Work />
+            <Work setPathname={setPathname} />
           </Route>
           <Route path="/statistics">
-            <Statistics />
+            <Statistics setPathname={setPathname} />
           </Route>
           <Route path="/">
-            <MainPage />
+            <MainPage setPathname={setPathname} />
           </Route>
         </Switch>
         <Button logout text={t('menu.logout')} handleClick={handleClick} />

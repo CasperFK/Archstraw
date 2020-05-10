@@ -49,7 +49,7 @@ const LoginForm = ({ changeCorrect, changeIncorrect, handleChange, validate }) =
           name="username"
           value={form.username}
           type="text"
-          handleChange={(e) => handleChange(e, setForm, form)}
+          handleChange={e => handleChange(e, setForm, form)}
           placeholder="login"
         />
       </LoginPart>
@@ -58,7 +58,7 @@ const LoginForm = ({ changeCorrect, changeIncorrect, handleChange, validate }) =
           name="password"
           value={form.password}
           type="password"
-          handleChange={(e) => handleChange(e, setForm, form)}
+          handleChange={e => handleChange(e, setForm, form)}
           placeholder="hasło"
         />
       </LoginPart>

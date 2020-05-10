@@ -21,4 +21,9 @@ const updateEmployeeState = (employee, condition) => ({
   condition,
 })
 
-export default { createDay, addEmployer, getPermanentEmployeeFromApi, updateEmployeeState };
+const updateEmployeeSalaryState = (employee) => ({
+  type: types.UPDATE_EMPLOYEE_SALARY_STATUS,
+  employee,
+})
+
+export default { createDay, addEmployer, getPermanentEmployeeFromApi, updateEmployeeState, updateEmployeeSalaryState };

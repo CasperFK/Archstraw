@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDonate, faPlus, faMinus, faVoteYea } from '@fortawesome/free-solid-svg-icons';
 import SweetAlert from 'sweetalert2-react';
 
-import { updateStateForEmployee } from '../../../apiCalls';
+import { updateStateForEmployee, updateSalaryStatus } from '../../../apiCalls';
 
 import {
   Container,
@@ -15,7 +15,7 @@ import {
 } from './styles/style';
 import actions from '../../app/work/duck/actions';
 
-const Employee = ({ name, surname, state, id, updateEmployee, employee }) => {
+const Employee = ({ date, name, surname, state, id, updateEmployee, employee, updateEmployeeSalaryState }) => {
   const [accept, setAccept] = React.useState(false);
   const [aggregate, setAggregate] = React.useState(false);
   const handleAdd = async () => {
@@ -30,11 +30,15 @@ const Employee = ({ name, surname, state, id, updateEmployee, employee }) => {
   };
 
   const acceptUpdate = async () => {
-    await updateStateForEmployee({ id: id, state: state});
+    await updateStateForEmployee({ id, state, date });
     setAccept(true);
   }
 
   const acceptAggregate = async () => {
+    const searchingEmployee = employee.filter((worker) => worker.id === id);
+    console.log(searchingEmployee)
+    updateEmployeeSalaryState(searchingEmployee);
+    await updateSalaryStatus({ id, salaryStatus: true, date })
     setAggregate(true);
   }
 
@@ -79,15 +83,19 @@ Employee.propTypes = {
   state: PropTypes.number.isRequired,
   employee: PropTypes.array,
   updateEmployee: PropTypes.func,
+  date: PropTypes.string,
+  updateEmployeeSalaryState: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   employee: state.employer.employess,
+  date: state.dayOfWork.date,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateEmployee: (employee, condition) =>
     dispatch(actions.updateEmployeeState(employee, condition)),
+  updateEmployeeSalaryState: (employee) => dispatch(actions.updateEmployeeSalaryState(employee)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Employee);

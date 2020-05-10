@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withTranslation, useTranslation } from 'react-i18next';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch, useLocation } from 'react-router-dom';
 import Topic from './Topic';
 import {
   Wrapper,
@@ -13,18 +13,25 @@ import {
   InfoElement,
 } from './styles/style';
 
-const Work = ({ date }) => {
+const Work = ({ date, setPathname }) => {
+  const [localLocation, setLocalLocation] = React.useState('')
+  const location = useLocation();
   const { t } = useTranslation();
   const { path, url } = useRouteMatch();
+
+  React.useEffect(() => {
+    setPathname(location.pathname);
+  }, location);
+
   return (
     <Wrapper>
       <NavWrapper>
         <Navigation>
           <ListItem>
-            <LinkItem to={`${url}/day`}>{t('work.work.day')}</LinkItem>
+            <LinkItem localLocation={localLocation === "/work/day"} to={`${url}/day`}>{t('work.work.day')}</LinkItem>
           </ListItem>
           <ListItem>
-            <LinkItem style={{display: date ? 'block' : 'none'}} to={`${url}/managment`}>{t('work.work.managment')}</LinkItem>
+            <LinkItem localLocation={localLocation === "/work/managment"} style={{display: date ? 'block' : 'none'}} to={`${url}/managment`}>{t('work.work.managment')}</LinkItem>
           </ListItem>
         </Navigation>
       </NavWrapper>
@@ -34,7 +41,7 @@ const Work = ({ date }) => {
           <InfoElement>{t('work.work.info')}</InfoElement>
         </Route>
         <Route path={`${path}/:topicId`}>
-          <Topic />
+          <Topic setLocation={setLocalLocation} />
         </Route>
       </Switch>
 
@@ -44,6 +51,7 @@ const Work = ({ date }) => {
 
 Work.propTypes = {
   date: PropTypes.string.isRequired,
+  setPathname: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({

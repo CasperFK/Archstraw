@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
 import Button from '../common/components/Button';
 
@@ -17,10 +17,15 @@ import Employee from './Employee';
 import actions from '../../app/work/duck/actions';
 import { sendNewEmployeeFromSelect } from '../../../apiCalls';
 
-const Managment = ({ date, ratio, employess, employee, createEmployer }) => {
+const Managment = ({ date, ratio, employess, employee, createEmployer, setLocation, backData }) => {
   const { t } = useTranslation();
+  const location = useLocation();
 
   const [worker, setWorker] = React.useState(employee[0]._id);
+
+  React.useEffect(()=> {
+    setLocation(location.pathname);
+  }, location);
 
   const now = new Date();
 
@@ -38,9 +43,23 @@ const Managment = ({ date, ratio, employess, employee, createEmployer }) => {
 
   const handleClickFromSelect = () => {
     employee.forEach(async (option) => {
-      if(option._id === worker) {
+      let excludeWorkerOne;
+      let excludeWorkerTwo;
+      for(const worker of employess) {
+        if(worker.id === option.id) {
+          excludeWorkerOne = worker.id;
+          break;
+        }
+      }
+      for(const worker of backData.employees) {
+        if(worker.id === option._id) {
+          excludeWorkerTwo = worker.id;
+          break;
+        }
+      }
+      if(option.id === worker && option.id !== excludeWorkerOne && option.id !== excludeWorkerTwo) {
         await sendNewEmployeeFromSelect({
-          id: option._id,
+          id: option.id,
           name: option.name,
           surname: option.surname,
           phoneNumber: option.phoneNumber,
@@ -50,7 +69,7 @@ const Managment = ({ date, ratio, employess, employee, createEmployer }) => {
           date
         });
         createEmployer({
-          id: option._id,
+          id: option.id,
           name: option.name,
           surname: option.surname,
           phoneNumber: option.phoneNumber,
@@ -62,8 +81,8 @@ const Managment = ({ date, ratio, employess, employee, createEmployer }) => {
     })
   }
 
-  const options = employee.map(({name, surname, _id}) =>
-    <option key={_id} value={_id}>{`${name} ${surname}`}</option>
+  const options = employee.map(({name, surname, id}) =>
+    <option key={id} value={id}>{`${name} ${surname}`}</option>
   );
 
   return (
@@ -88,7 +107,7 @@ const Managment = ({ date, ratio, employess, employee, createEmployer }) => {
             </Container>
           </Container>
           <div>
-            {employess.map(({id, name, surname, state})=> (
+            {employess.map(({ id, name, surname, state }) => (
               <Employee key={id} id={id} name={name} surname={surname} state={state} />
             ))}
           </div>
@@ -101,11 +120,13 @@ const Managment = ({ date, ratio, employess, employee, createEmployer }) => {
 };
 
 Managment.propTypes = {
+  setLocation: PropTypes.func,
   date: PropTypes.string.isRequired,
   ratio: PropTypes.number.isRequired,
   employess: PropTypes.array,
   createEmployer: PropTypes.func,
   employee: PropTypes.array,
+  backData: PropTypes.array,
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -115,6 +136,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   date: state.dayOfWork.date,
   ratio: state.dayOfWork.ratio,
+  backData: state.dayOfWork.backData,
   employess: state.employer.employess,
   employee: state.employee.permanentEmployee,
 });

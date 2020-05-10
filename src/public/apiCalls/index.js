@@ -1,4 +1,4 @@
-import { URL, login, newDay, newEmployess, getEmployee, newEmployeeFromSelect, updateState } from '../constants';
+import { URL, login, newDay, newEmployess, getEmployee, newEmployeeFromSelect, updateState, updateSalaryStatusForWorker } from '../constants';
 
 export const sendLoginData = (form) =>
   fetch(`${URL}/${login}`, {
@@ -64,11 +64,22 @@ export const getListOfEmployee = () =>
 
 export const updateStateForEmployee = (fields) =>
   fetch(`${URL}/${updateState}`, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
     },
     body: JSON.stringify(fields),
   });
+
+export const updateSalaryStatus = (fields) =>
+  fetch(`${URL}/${updateSalaryStatusForWorker}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+    },
+    body: JSON.stringify(fields),
+  });
+
 

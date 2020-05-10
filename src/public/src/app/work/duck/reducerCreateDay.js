@@ -3,6 +3,7 @@ import types from './types';
 const INITIAL_STATE = {
   date: '',
   ratio: 0,
+  backData: [],
 };
 
 const dayService = (state = INITIAL_STATE, action) => {
@@ -12,6 +13,7 @@ const dayService = (state = INITIAL_STATE, action) => {
         ...state,
         date: action.value.date,
         ratio: action.value.ratio,
+        backData: action.value.backData,
       };
     default:
       return state;

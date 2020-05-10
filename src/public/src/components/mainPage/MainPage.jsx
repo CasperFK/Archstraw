@@ -1,9 +1,18 @@
 import React from 'react';
-import { Wrapper, Title, Features, ListItem, ArrowContainer, Arrow } from './styles/styles';
+import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
 
-const MainPage = () => {
+import { Wrapper, Title, Features, ListItem, ArrowContainer, Arrow } from './styles/styles';
+
+const MainPage = ({ setPathname }) => {
   const { t } = useTranslation();
+
+  const location = useLocation();
+
+  React.useEffect(()=> {
+    setPathname(location.pathname);
+  }, location);
 
   return (
     <Wrapper>
@@ -54,5 +63,9 @@ const MainPage = () => {
     </Wrapper>
   );
 };
+
+MainPage.propTypes = {
+  setPathname: PropTypes.func,
+}
 
 export default withTranslation()(MainPage);

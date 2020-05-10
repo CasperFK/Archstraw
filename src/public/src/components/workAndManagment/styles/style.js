@@ -94,8 +94,23 @@ export const InfoElement = styled.div`
 `;
 
 export const LinkItem = styled(Link)`
-  text-decoration: none;
-  color: black;
+  & {
+    display: block;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    text-align: center;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 95%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: ${(props) => props.localLocation ? '#444' : ''};
+  }
 `;
 
 export const ChooseFromSelect = styled.h2`

@@ -31,17 +31,21 @@ export class WorkService {
 
   async addWorkerToWorkDay(worker: WorkerModel, thisWorkDay: string): Promise<any> {
       const answer = await this.workDayModel.updateOne({date: thisWorkDay, 'employees.id': {$nin:[worker.id]}}, {$push: {employees: worker}})
-      return answer;
+    if (answer) return 'true';
+    return 'false';
   }
 
   async updateWorkerState(worker: {state: string, id: string | number, date: string}): Promise<any> {
     const answer = await this.workDayModel.updateOne({date: worker.date, 'employees.id': worker.id}, { $set: {'employees.$.state': worker.state} })
-    return answer;
+    if (answer) return 'true';
+    return 'false';
   }
 
   async updateWorkerSalaryStatus(worker: {salaryStatus: boolean, id: string, date: string}): Promise<any> {
     const answer = await this.workDayModel.updateOne({date: worker.date, 'employees.id': worker.id}, { $set: {'employees.$.salaryStatus': worker.salaryStatus} })
-    return answer;
+    if (answer) return 'true';
+    return 'false';
+
   }
 
   async getAllWorkers(): Promise<WorkerModel[]> {

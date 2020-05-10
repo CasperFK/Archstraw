@@ -26,7 +26,8 @@ export class WorkerController {
     const id = await this.workService.createWorker(worker as WorkerModel);
     const { phoneNumber, _id, ...newWorker} : WorkerModel = body;
     const answer = await this.workService.addWorkerToWorkDay({ ...newWorker, startWork, endWork, state, id} as WorkerModel, date);
-    return answer;
+    if (answer) return id;
+    return 'false';
   }
 
   @UseGuards(JwtAuthGuard)

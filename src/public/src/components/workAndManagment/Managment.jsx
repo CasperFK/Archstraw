@@ -45,44 +45,47 @@ const Managment = ({ date, ratio, employess, employee, createEmployer, setLocati
     employee.forEach(async (option) => {
       let excludeWorkerOne;
       let excludeWorkerTwo;
-      for(const worker of employess) {
-        if(worker.id === option.id) {
-          excludeWorkerOne = worker.id;
+      for(const person of employess) {
+        console.log('person', person, 'option', option)
+        if(person.id === option._id) {
+          excludeWorkerOne = person.id;
           break;
         }
       }
-      for(const worker of backData.employees) {
-        if(worker.id === option._id) {
-          excludeWorkerTwo = worker.id;
+      for(const person of backData.employees) {
+        if(person.id === option._id) {
+          excludeWorkerTwo = person.id;
           break;
         }
       }
-      if(option.id === worker && option.id !== excludeWorkerOne && option.id !== excludeWorkerTwo) {
+      if(option._id === worker && option._id !== excludeWorkerOne && option._id !== excludeWorkerTwo) {
         await sendNewEmployeeFromSelect({
-          id: option.id,
+          id: option._id,
           name: option.name,
           surname: option.surname,
           phoneNumber: option.phoneNumber,
           startWork: currentTime,
           endWork: '',
           state: 0,
-          date
+          date,
+          salaryStatus: false,
         });
         createEmployer({
-          id: option.id,
+          id: option._id,
           name: option.name,
           surname: option.surname,
           phoneNumber: option.phoneNumber,
           startWork: currentTime,
           endWork: '',
           state: 0,
+          salaryStatus: false,
         });
       }
     })
   }
 
-  const options = employee.map(({name, surname, id}) =>
-    <option key={id} value={id}>{`${name} ${surname}`}</option>
+  const options = employee.map(({name, surname, _id}) =>
+    <option key={_id} value={_id}>{`${name} ${surname}`}</option>
   );
 
   return (
@@ -109,7 +112,7 @@ const Managment = ({ date, ratio, employess, employee, createEmployer, setLocati
           <div>
             {employess.map(({ id, name, surname, state }) => (
               <Employee key={id} id={id} name={name} surname={surname} state={state} />
-            ))}
+            )).reverse()}
           </div>
         </CurrentDay>
       ) : (

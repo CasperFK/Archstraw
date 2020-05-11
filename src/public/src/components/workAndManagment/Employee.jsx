@@ -21,7 +21,6 @@ const Employee = ({ date, name, surname, state, id, updateEmployee, employee, up
   const handleAdd = async () => {
     const searchingEmployee = employee.filter((worker) => worker.id === id);
     updateEmployee(searchingEmployee, '+');
-
   };
 
   const handleMinus = async () => {
@@ -36,7 +35,6 @@ const Employee = ({ date, name, surname, state, id, updateEmployee, employee, up
 
   const acceptAggregate = async () => {
     const searchingEmployee = employee.filter((worker) => worker.id === id);
-    console.log(searchingEmployee)
     updateEmployeeSalaryState(searchingEmployee);
     await updateSalaryStatus({ id, salaryStatus: true, date })
     setAggregate(true);

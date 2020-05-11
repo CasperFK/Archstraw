@@ -2,7 +2,7 @@ import React from 'react';
 import { Reset } from 'styled-reset';
 import { withTranslation, useTranslation } from 'react-i18next';
 import PageApp from './PageApp';
-import MainPage from './components/menu/MenuHandle';
+import MainPage from './components/menu/Menu';
 import styled from 'styled-components';
 
 const GlobalStyles = styled.div`

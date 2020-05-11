@@ -51,13 +51,14 @@ export const SimpleButton = styled.button`
   width: 40px;
   height: 40px;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid ${({disable}) => disable ? 'grey' : 'black'};
+  color: ${({disable}) => disable ? 'grey' : 'black'};
   background-color: #ffffff;
   margin: 10px 10px;
   cursor: pointer;
   transition: .3;
   &:hover {
-    background-color: #f9f4f4;
+    background-color: ${({disable}) => disable ? 'white' : '#f9f4f4'};
   }
 `;
 
@@ -133,8 +134,9 @@ export const CreateDayContainer = styled.div`
 export const Container = styled.div`
   display: ${props => props.flex ? 'flex' : 'block'};
   margin: ${props => props.special ? "20px" : "0"} 0;
-  flex-direction: ${props => props.flex ? 'column' : 'row'}
-  align-items: ${props => props.flex ? 'center' : 'flex-start'}
+  flex-direction: ${props => props.flex ? 'column' : 'row'};
+  align-items: ${props => props.flex ? 'center' : 'flex-start'};
+  position: relative;
 `;
 
 export const FormContainer = styled.form`
@@ -162,4 +164,15 @@ export const EmployeeNameSurname = styled.p`
   padding: 5px 0;
   width: 200px;
 `;
+
+export const HoverElement = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  background-color: transparent;
+`
 

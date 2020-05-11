@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import actions from '../../app/signIn/duck/actions';
-import MainPage from '../mainPage/MainPage';
-import Statistics from '../statistics/Statistics';
-import Work from '../workAndManagment/Work';
+import actions from '../../../../app/signIn/duck/actions';
+import MainPage from '../../../mainPage/MainPage';
+import Statistics from '../../../statistics/Statistics';
+import Work from '../../../workAndManagment/Work';
 import {
   Wrapper,
   Navigation,
   ListItem,
   ListWrapper,
   StyledLink,
-} from './styles/style';
+} from '../../style';
 import { useTranslation } from 'react-i18next';
-import Button from '../common/components/Button';
+import Button from '../../../common/components/Button';
 
 const Menu = ({ changeIncorrect }) => {
   const { t } = useTranslation();

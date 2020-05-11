@@ -5,17 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDonate, faPlus, faMinus, faVoteYea } from '@fortawesome/free-solid-svg-icons';
 import SweetAlert from 'sweetalert2-react';
 
-import { updateStateForEmployee, updateSalaryStatus } from '../../../apiCalls';
+import { updateStateForEmployee, updateSalaryStatus } from '../../../../apiCalls';
 
 import {
   Container,
   EmployeeNameSurname,
   SimpleButton,
   EmployeeWrapper,
-} from './styles/style';
-import actions from '../../app/work/duck/actions';
+  HoverElement,
+} from '../style';
+import actions from '../../../app/work/duck/actions';
 
-const Employee = ({ date, name, surname, state, id, updateEmployee, employee, updateEmployeeSalaryState }) => {
+const Employee = ({ date, name, surname, state, id, updateEmployee, employee, updateEmployeeSalaryState, salaryStatus }) => {
   const [accept, setAccept] = React.useState(false);
   const [aggregate, setAggregate] = React.useState(false);
   const handleAdd = async () => {
@@ -43,15 +44,16 @@ const Employee = ({ date, name, surname, state, id, updateEmployee, employee, up
 
   return (
     <Container style={{ margin: '0 auto 50px' }} flex>
+      {salaryStatus ? <HoverElement flex /> : ""}
       <EmployeeWrapper>
         <EmployeeNameSurname>{`${name} ${surname}, łubianki: [${state}]`}</EmployeeNameSurname>
-        <SimpleButton onClick={handleAdd}>
+        <SimpleButton onClick={handleAdd} disable={salaryStatus}>
           <FontAwesomeIcon icon={faPlus} />
         </SimpleButton>
-        <SimpleButton onClick={handleMinus}>
+        <SimpleButton onClick={handleMinus} disable={salaryStatus}>
           <FontAwesomeIcon icon={faMinus} />
         </SimpleButton>
-        <SimpleButton onClick={acceptUpdate}>
+        <SimpleButton onClick={acceptUpdate} disable={salaryStatus}>
           <FontAwesomeIcon icon={faVoteYea} />
           <SweetAlert
             show={accept}
@@ -60,7 +62,7 @@ const Employee = ({ date, name, surname, state, id, updateEmployee, employee, up
             onConfirm={() => setAccept(false)}
           />
         </SimpleButton>
-        <SimpleButton onClick={acceptAggregate}>
+        <SimpleButton onClick={acceptAggregate} disable={salaryStatus}>
           <FontAwesomeIcon icon={faDonate} />
           <SweetAlert
             show={aggregate}
@@ -79,6 +81,7 @@ Employee.propTypes = {
   name: PropTypes.string.isRequired,
   surname: PropTypes.string.isRequired,
   state: PropTypes.number.isRequired,
+  salaryStatus: PropTypes.bool.isRequired,
   employee: PropTypes.array,
   updateEmployee: PropTypes.func,
   date: PropTypes.string,

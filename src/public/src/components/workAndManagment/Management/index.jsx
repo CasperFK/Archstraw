@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
-import Button from '../common/components/Button';
+import Button from '../../common/components/Button';
 
 import {
   CurrentDay,
@@ -11,13 +11,13 @@ import {
   ChooseFromSelect,
   OptionContainer,
   Container,
-} from './styles/style';
+} from '../style';
 
-import Employee from './Employee';
-import actions from '../../app/work/duck/actions';
-import { sendNewEmployeeFromSelect } from '../../../apiCalls';
+import Employee from '../Employee';
+import actions from '../../../app/work/duck/actions';
+import { sendNewEmployeeFromSelect } from '../../../../apiCalls';
 
-const Managment = ({ date, ratio, employess, employee, createEmployer, setLocation, backData }) => {
+const Management = ({ date, ratio, employess, employee, createEmployer, setLocation, backData }) => {
   const { t } = useTranslation();
   const location = useLocation();
 
@@ -110,8 +110,8 @@ const Managment = ({ date, ratio, employess, employee, createEmployer, setLocati
             </Container>
           </Container>
           <div>
-            {employess.map(({ id, name, surname, state }) => (
-              <Employee key={id} id={id} name={name} surname={surname} state={state} />
+            {employess.map(({ id, name, surname, state, salaryStatus }) => (
+              <Employee key={id} id={id} name={name} surname={surname} state={state} salaryStatus={salaryStatus}/>
             )).reverse()}
           </div>
         </CurrentDay>
@@ -122,7 +122,7 @@ const Managment = ({ date, ratio, employess, employee, createEmployer, setLocati
   );
 };
 
-Managment.propTypes = {
+Management.propTypes = {
   setLocation: PropTypes.func,
   date: PropTypes.string.isRequired,
   ratio: PropTypes.number.isRequired,
@@ -144,4 +144,4 @@ const mapStateToProps = (state) => ({
   employee: state.employee.permanentEmployee,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Managment));
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Management));

@@ -45,13 +45,13 @@
   <metadata
      id="metadata7">
     <rdf:RDF>
-      <cc:Work
+      <cc:Index
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title></dc:title>
-      </cc:Work>
+      </cc:Index>
     </rdf:RDF>
   </metadata>
   <g

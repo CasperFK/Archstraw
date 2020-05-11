@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
 
-import Button from '../common/components/Button';
-import { sendNewDay, getListOfEmployee } from '../../../apiCalls';
-import actions from '../../app/work/duck/actions';
-import SecondaryInput from '../common/components/SecondaryInput';
+import Button from '../../common/components/Button';
+import { sendNewDay, getListOfEmployee } from '../../../../apiCalls';
+import actions from '../../../app/work/duck/actions';
+import SecondaryInput from '../../common/components/SecondaryInput';
 import {
   Title,
   FormContainer,
   CreateDayContainer
-} from './styles/style';
+} from '../style';
 
 const regex = /[-+]?(?:\d*\.?\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?$/;
 
-const NewDay = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocation }) => {
+const Day = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocation }) => {
   const { t } = useTranslation();
 
   const location = useLocation();
@@ -126,11 +126,11 @@ const mapDispatchToProps = (dispatch) => ({
   createEmployee: (employer) => dispatch(actions.addEmployer(employer)),
 });
 
-NewDay.propTypes = {
+Day.propTypes = {
   setLocation: PropTypes.func,
   getPermanentEmployeeFromApi: PropTypes.func,
   createDay: PropTypes.func,
   createEmployee: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(withTranslation()(NewDay));
+export default connect(null, mapDispatchToProps)(withTranslation()(Day));

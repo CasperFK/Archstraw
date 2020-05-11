@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation, useTranslation } from 'react-i18next';
-import ErrorMessage from './ErrorMesage';
+import ErrorMessage from '../../common/components/ErrorMesage';
 import { connect } from 'react-redux';
-import actions from '../../app/signIn/duck/actions';
-import { sendLoginData } from '../../../apiCalls';
-import Input from '../common/components/Input';
+import actions from '../../../app/signIn/duck/actions';
+import { sendLoginData } from '../../../../apiCalls';
+import Input from '../../common/components/Input';
 import {
   PageTitle,
   LoginPart,
   FormContainer,
   Title,
-} from './styles/style';
-import Button from '../common/components/Button';
+} from '../style';
+import Button from '../../common/components/Button';
 
-const LoginForm = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
+const Index = ({ changeCorrect, changeIncorrect, handleChange, validate }) => {
   const { t } = useTranslation();
 
   const [error, setError] = React.useState(null);
@@ -67,7 +67,7 @@ const LoginForm = ({ changeCorrect, changeIncorrect, handleChange, validate }) =
   );
 };
 
-LoginForm.propTypes = {
+Index.propTypes = {
   changeCorrect: PropTypes.func.isRequired,
   changeIncorrect: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
@@ -79,4 +79,4 @@ const mapDispatchToProps = (dispatch) => ({
   changeIncorrect: () => dispatch(actions.changeIncorrect()),
 });
 
-export default connect(null, mapDispatchToProps)(withTranslation()(LoginForm));
+export default connect(null, mapDispatchToProps)(withTranslation()(Index));

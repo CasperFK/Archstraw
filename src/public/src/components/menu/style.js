@@ -42,15 +42,6 @@ export const LoginPart = styled.label`
   line-height: 30px;
 `;
 
-export const StyledErrorMessage = styled.p`
-  width: 100%;
-  line-height: 30px;
-  font-size: 18px;
-  color: red;
-  padding-left: 15px;
-  text-align: center;
-`;
-
 export const Wrapper = styled.div`
   width: 100%;
 `;

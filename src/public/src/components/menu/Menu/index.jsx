@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MenuApp from './Menu';
-import Form from './LoginForm';
+import MenuApp from './modules/Menu';
+import Form from '../LoginForm';
 import { connect } from 'react-redux';
-import withHandleChange from '../shared/hoc/withHandleChange';
-import withValidate from '../shared/hoc/withValidate';
+import withHandleChange from '../../shared/hoc/withHandleChange';
+import withValidate from '../../shared/hoc/withValidate';
 import { compose } from 'redux';
 
 const FormWithHandleChange = compose(withHandleChange, withValidate)(Form);

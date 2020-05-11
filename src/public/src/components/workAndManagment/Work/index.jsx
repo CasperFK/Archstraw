@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withTranslation, useTranslation } from 'react-i18next';
 import { Switch, Route, useRouteMatch, useLocation } from 'react-router-dom';
-import Topic from './Topic';
+import Topic from '../Topic';
 import {
   Wrapper,
   NavWrapper,
@@ -11,7 +11,7 @@ import {
   ListItem,
   LinkItem,
   InfoElement,
-} from './styles/style';
+} from '../style';
 
 const Work = ({ date, setPathname }) => {
   const [localLocation, setLocalLocation] = React.useState('')

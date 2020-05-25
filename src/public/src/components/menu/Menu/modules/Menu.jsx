@@ -38,9 +38,9 @@ const Menu = ({ changeIncorrect }) => {
             <ListItem flag={pathname.includes('/work')}>
               <StyledLink flag={pathname.includes('/work')} to="/work">{t('menu.workDesk')}</StyledLink>
             </ListItem>
-            <ListItem flag={pathname === '/statistics'}>
-              <StyledLink flag={pathname === '/statistics'} to="/statistics">{t('menu.statistics')}</StyledLink>
-            </ListItem>
+            {/*<ListItem flag={pathname === '/statistics'}>*/}
+            {/*  <StyledLink flag={pathname === '/statistics'} to="/statistics">{t('menu.statistics')}</StyledLink>*/}
+            {/*</ListItem>*/}
           </ListWrapper>
         </Navigation>
 
@@ -48,9 +48,9 @@ const Menu = ({ changeIncorrect }) => {
           <Route path="/work">
             <Work setPathname={setPathname} />
           </Route>
-          <Route path="/statistics">
-            <Statistics setPathname={setPathname} />
-          </Route>
+          {/*<Route path="/statistics">*/}
+          {/*  <Statistics setPathname={setPathname} />*/}
+          {/*</Route>*/}
           <Route path="/">
             <MainPage setPathname={setPathname} />
           </Route>

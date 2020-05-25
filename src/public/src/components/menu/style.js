@@ -53,13 +53,13 @@ export const Navigation = styled.div`
 export const ListWrapper = styled.ul`
   display: flex;
   justify-content: space-around;
-  line-height: 10vh;
+  line-height: 8vh;
   list-style: none;
 `;
 
 export const ListItem = styled.li`
   & {
-    font-size: 16px;
+    font-size: 14px;
     flex-basis: 30%;
     position: relative;
     text-align: center;

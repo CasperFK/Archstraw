@@ -1,41 +1,18 @@
 {
-  "title": "Archstraw PL",
+  "title": "Archstraw",
   "main": {
-    "title": "Strona główna",
-    "section1": "Funkcjonalności",
-    "article1": "Pracownik:",
+    "section1": "Funckje aplikacji:",
+    "article1": "Co możemy zrobić z pracownikiem:",
     "article1elements": [
-      "dodawnie",
-      "usuwanie",
-      "edytowanie",
-      "archiwizowanie",
-      "wyszukiwanie"
+      "Stworzyć go.",
+      "Dodawać mu łubianki i zabierać je.",
+      "Możemy zaznaczyć że dany pracownik został spłacony."
     ],
-    "article2": "Dzień roboczy",
+    "article2": "Co możemy zrobić z dniem roboczym:",
     "article2elements": [
-      "dodawanie pracowanika",
-      "stawka dnia, z łubianki",
-      "data dnia pracy",
-      "aktualizowanie stanu łubianek pracownika, możliwość tylko dodawania",
-      "czas pracy, początek koniec"
-    ],
-    "article3": "Wyszukiwanie pracownika po:",
-    "article3elements": [
-      "nr. telefonu",
-      "nazwisku",
-      "dacie pracy",
-      "wynagrodzeniu dziennnym/całkowitym",
-      "ilości łubianek nazbieranych miesięcznie",
-      "przepracowanych godzinnach dziennie",
-      "przepracowanych godzinnach miesięcznie",
-      "przepracowanych godzinnach dziennie",
-      "przepracowanych godzinnach miesięcznie"
-    ],
-    "article4": "Statystyka:",
-    "article4elements": [
-      "wykres przedstawiający ilość zebranych łubianek dziennie",
-      "wykres przedstawiający ilość pieniędzy zapłaconych pracownikom danego aktualnego dnia",
-      "wykres przedstawiający wydajność pracowników, stosunek liczby pracowników do nazbieranych łubianek"
+      "Możemy go stworzyć.",
+      "Do dnia roboczego możemy dodać pracownika po przez stworzenie pracownika.",
+      "Do dnia roboczego możemy dodać pracownika po przez wybranie go już z listy istniejących pracowników."
     ]
   },
   "work": {

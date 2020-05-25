@@ -46,7 +46,6 @@ const Management = ({ date, ratio, employess, employee, createEmployer, setLocat
       let excludeWorkerOne;
       let excludeWorkerTwo;
       for(const person of employess) {
-        console.log('person', person, 'option', option)
         if(person.id === option._id) {
           excludeWorkerOne = person.id;
           break;

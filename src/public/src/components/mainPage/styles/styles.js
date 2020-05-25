@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   min-height: 80vh;
   padding-bottom: 50px;
+  @media (min-width: 1024px) {
+    width: 60vw;
+    margin: 0 auto;
+  }
 `;
 
 export const Title = styled.h1`

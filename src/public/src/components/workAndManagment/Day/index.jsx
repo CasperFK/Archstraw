@@ -81,7 +81,7 @@ const Day = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocati
             startWork: worker.startWork,
             endWork: worker.endWork,
             state: parseInt(worker.state),
-            salaryStatus: false,
+            salaryStatus: worker.salaryStatus,
           })
         })
       }
@@ -92,7 +92,7 @@ const Day = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocati
       });
     } else {
       setError(true);
-      return;
+      return; 
     }
     const employee = await getListOfEmployee();
     getPermanentEmployeeFromApi(employee);

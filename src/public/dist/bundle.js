@@ -55035,18 +55035,6 @@ var MainPage = function MainPage(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
       key: el
     }, el);
-  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ListItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Features"], null, t('main.article3'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ArrowContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Arrow"], null), t('main.article3elements', {
-    returnObjects: true
-  }).map(function (el) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
-      key: el
-    }, el);
-  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ListItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Features"], null, t('main.article4'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ArrowContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Arrow"], null), t('main.article4elements', {
-    returnObjects: true
-  }).map(function (el) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
-      key: el
-    }, el);
   }))))));
 };
 

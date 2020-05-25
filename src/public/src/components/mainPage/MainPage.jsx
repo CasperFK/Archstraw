@@ -16,7 +16,6 @@ const MainPage = ({ setPathname }) => {
 
   return (
     <Wrapper>
-      <Title>{t('main.title')}</Title>
       <Features>
         {t('main.section1')}
         <ListItem>
@@ -35,26 +34,6 @@ const MainPage = ({ setPathname }) => {
             <ArrowContainer>
               <Arrow/>
             {t('main.article2elements', { returnObjects: true }).map(el =>
-              <ListItem key={el}>{el}</ListItem>)}
-            </ArrowContainer>
-          </Features>
-        </ListItem>
-        <ListItem>
-          <Features>
-            {t('main.article3')}
-            <ArrowContainer>
-              <Arrow/>
-            {t('main.article3elements', { returnObjects: true }).map(el =>
-              <ListItem key={el}>{el}</ListItem>)}
-            </ArrowContainer>
-          </Features>
-        </ListItem>
-        <ListItem>
-          <Features>
-            {t('main.article4')}
-            <ArrowContainer>
-              <Arrow/>
-            {t('main.article4elements', { returnObjects: true }).map(el =>
               <ListItem key={el}>{el}</ListItem>)}
             </ArrowContainer>
           </Features>

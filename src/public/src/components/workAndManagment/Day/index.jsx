@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
 
 import Button from '../../common/components/Button';
-import { sendNewDay, getListOfEmployee } from '../../../../apiCalls';
+import { sendNewDay, getListOfEmployee } from '../../../apiCalls';
 import actions from '../../../app/work/duck/actions';
 import SecondaryInput from '../../common/components/SecondaryInput';
 import {

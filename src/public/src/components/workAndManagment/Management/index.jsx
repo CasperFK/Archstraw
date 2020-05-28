@@ -15,7 +15,7 @@ import {
 
 import Employee from '../Employee';
 import actions from '../../../app/work/duck/actions';
-import { sendNewEmployeeFromSelect } from '../../../../apiCalls';
+import { sendNewEmployeeFromSelect } from '../../../apiCalls';
 
 const Management = ({ date, ratio, employess, employee, createEmployer, setLocation, backData }) => {
   const { t } = useTranslation();

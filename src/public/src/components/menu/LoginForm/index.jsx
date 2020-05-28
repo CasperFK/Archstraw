@@ -4,7 +4,7 @@ import { withTranslation, useTranslation } from 'react-i18next';
 import ErrorMessage from '../../common/components/ErrorMesage';
 import { connect } from 'react-redux';
 import actions from '../../../app/signIn/duck/actions';
-import { sendLoginData } from '../../../../apiCalls';
+import { sendLoginData } from '../../../apiCalls';
 import Input from '../../common/components/Input';
 import {
   PageTitle,

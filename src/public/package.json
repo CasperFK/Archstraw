@@ -18,6 +18,7 @@
     "react-i18next": "^11.3.4",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "styled-components": "^5.0.1",
@@ -26,15 +27,15 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
+    "@babel/core": "^7.10.1",
     "@babel/plugin-proposal-export-default-from": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
-    "css-loader": "^3.4.2",
+    "css-loader": "^3.5.3",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.2.0",
@@ -42,15 +43,28 @@
     "react-hot-loader": "^4.12.19",
     "source-map-loader": "^0.2.4",
     "style-loader": "^1.1.3",
-    "webpack": "^4.41.5",
+    "webpack": "^4.42.0",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "cross-env": "^7.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "cross-env SKIP_PREFLIGHT_CHECK=true react-scripts build"
   },
   "author": "Adam Kopański && Kacper Kopański",
-  "license": "ISC"
+  "license": "ISC",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

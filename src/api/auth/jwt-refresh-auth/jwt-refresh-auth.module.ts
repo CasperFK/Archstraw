@@ -1,16 +1,14 @@
 import { Module } from '@nestjs/common';
 import { JwtRefreshAuthService } from './jwt-refresh-auth.service';
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from '../constants';
 import { JwtStrategy } from '../jwt-auth/jwt.strategy';
-import { JwtAuthModule } from '../jwt-auth/jwt-auth.module';
-import { JwtAuthService } from '../jwt-auth/jwt-auth.service';
-import { UsersService } from '../../users/users.service';
+import { config } from 'dotenv';
+config();
 
 @Module({
   imports: [
     JwtModule.register({
-    secret: jwtConstants.refreshToken,
+    secret: process.env.SECRET_KEY_FOR_REFRESH_TOKEN,
     }),
   ],
   providers: [JwtRefreshAuthService, JwtStrategy],

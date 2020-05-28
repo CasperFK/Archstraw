@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withTranslation, useTranslation } from 'react-i18next';
 
-import { sendNewEmployess } from '../../../../../apiCalls';
+import { sendNewEmployess } from '../../../../apiCalls';
 import actions from '../../../../app/work/duck/actions';
 import {
   WrapperForm,

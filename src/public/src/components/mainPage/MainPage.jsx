@@ -12,7 +12,7 @@ const MainPage = ({ setPathname }) => {
 
   React.useEffect(()=> {
     setPathname(location.pathname);
-  }, location);
+  }, [location]);
 
   return (
     <Wrapper>

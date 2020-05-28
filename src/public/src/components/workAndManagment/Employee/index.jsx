@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDonate, faPlus, faMinus, faVoteYea } from '@fortawesome/free-solid-svg-icons';
 import SweetAlert from 'sweetalert2-react';
 
-import { updateStateForEmployee, updateSalaryStatus } from '../../../../apiCalls';
+import { updateStateForEmployee, updateSalaryStatus } from '../../../apiCalls';
 
 import {
   Container,

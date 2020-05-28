@@ -6,7 +6,11 @@ import { SignonModule } from './signon/signon.module';
 import { WorkModule } from './work/work.module';
 
 @Module({
-  imports: [AuthModule, SigninModule, SignonModule, WorkModule],
+  imports: [
+    AuthModule,
+    SigninModule,
+    SignonModule,
+    WorkModule],
   controllers: [ApiController],
   providers: [],
   exports: [],

@@ -5,6 +5,7 @@ import { JwtAuthService } from './jwt-auth.service';
 import { UsersModule } from '../../users/users.module';
 import { JwtRefreshAuthModule } from '../jwt-refresh-auth/jwt-refresh-auth.module';
 import { config } from 'dotenv';
+import { ConfigService } from '@nestjs/config';
 config();
 
 @Module({
@@ -19,6 +20,7 @@ config();
   providers: [
     JwtStrategy,
     JwtAuthService,
+    ConfigService
   ],
   exports: [JwtStrategy, JwtAuthService],
 })

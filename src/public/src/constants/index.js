@@ -1,4 +1,4 @@
-export * from 'url';
+export { URL } from './url.js';
 export const login = 'sign-in';
 export const newDay = 'new-day';
 export const newEmployess = 'new-employee';

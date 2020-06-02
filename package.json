@@ -7,7 +7,6 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "build:server": "cross-env SKIP_PREFLIGHT_CHECK=true nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "node dist/main.js",
     "start:dev": "nest start --watch",
@@ -58,8 +57,7 @@
     "ts-node": "^8.4.1",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0",
-    "typescript": "^3.6.3",
-    "cross-env": "^7.0.2"
+    "typescript": "^3.6.3"
   },
   "jest": {
     "moduleFileExtensions": [

@@ -2,6 +2,8 @@
 /dist
 /node_modules
 /src/public/node_modules
+/src/public/dist
+/src/public/build
 .env
 
 

@@ -55023,7 +55023,7 @@ var MainPage = function MainPage(_ref) {
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     setPathname(location.pathname);
   }, location);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Wrapper"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Title"], null, t('main.title')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Features"], null, t('main.section1'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ListItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Features"], null, t('main.article1'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ArrowContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Arrow"], null), t('main.article1elements', {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Wrapper"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Features"], null, t('main.section1'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ListItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Features"], null, t('main.article1'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ArrowContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["Arrow"], null), t('main.article1elements', {
     returnObjects: true
   }).map(function (el) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_styles__WEBPACK_IMPORTED_MODULE_4__["ListItem"], {
@@ -55116,7 +55116,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\n  min-height: 80vh;\n  padding-bottom: 50px;\n"]);
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\n  min-height: 80vh;\n  padding-bottom: 50px;\n  @media (min-width: 1024px) {\n    width: 60vw;\n    margin: 0 auto;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -55411,18 +55411,9 @@ var Menu = function Menu(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_9__["StyledLink"], {
     flag: pathname.includes('/work'),
     to: "/work"
-  }, t('menu.workDesk'))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_9__["ListItem"], {
-    flag: pathname === '/statistics'
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_9__["StyledLink"], {
-    flag: pathname === '/statistics',
-    to: "/statistics"
-  }, t('menu.statistics'))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+  }, t('menu.workDesk'))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     path: "/work"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_workAndManagment_Work__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    setPathname: setPathname
-  })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
-    path: "/statistics"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_statistics_Statistics__WEBPACK_IMPORTED_MODULE_7__["default"], {
     setPathname: setPathname
   })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     path: "/"
@@ -55486,7 +55477,7 @@ function _templateObject9() {
 }
 
 function _templateObject8() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\n  & {\n    font-size: 16px;\n    flex-basis: 30%;\n    position: relative;\n    text-align: center;\n  }\n\n  &:before {\n    content: '';\n    position: absolute;\n    top: 95%;\n    left: 25%;\n    bottom: 0;\n    right: 25%;\n    background-color: ", ";\n  }\n"]);
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\n  & {\n    font-size: 14px;\n    flex-basis: 30%;\n    position: relative;\n    text-align: center;\n  }\n\n  &:before {\n    content: '';\n    position: absolute;\n    top: 95%;\n    left: 25%;\n    bottom: 0;\n    right: 25%;\n    background-color: ", ";\n  }\n"]);
 
   _templateObject8 = function _templateObject8() {
     return data;
@@ -55496,7 +55487,7 @@ function _templateObject8() {
 }
 
 function _templateObject7() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\n  display: flex;\n  justify-content: space-around;\n  line-height: 10vh;\n  list-style: none;\n"]);
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\n  display: flex;\n  justify-content: space-around;\n  line-height: 8vh;\n  list-style: none;\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -55858,7 +55849,7 @@ var Day = function Day(_ref) {
                     startWork: worker.startWork,
                     endWork: worker.endWork,
                     state: parseInt(worker.state),
-                    salaryStatus: false
+                    salaryStatus: worker.salaryStatus
                   });
                 });
               }
@@ -56519,129 +56510,128 @@ var Management = function Management(_ref) {
 
               case 5:
                 if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-                  _context.next = 14;
+                  _context.next = 13;
                   break;
                 }
 
                 person = _step.value;
-                console.log('person', person, 'option', option);
 
                 if (!(person.id === option._id)) {
-                  _context.next = 11;
+                  _context.next = 10;
                   break;
                 }
 
                 excludeWorkerOne = person.id;
-                return _context.abrupt("break", 14);
+                return _context.abrupt("break", 13);
 
-              case 11:
+              case 10:
                 _iteratorNormalCompletion = true;
                 _context.next = 5;
                 break;
 
-              case 14:
-                _context.next = 20;
+              case 13:
+                _context.next = 19;
                 break;
 
-              case 16:
-                _context.prev = 16;
+              case 15:
+                _context.prev = 15;
                 _context.t0 = _context["catch"](3);
                 _didIteratorError = true;
                 _iteratorError = _context.t0;
 
-              case 20:
+              case 19:
+                _context.prev = 19;
                 _context.prev = 20;
-                _context.prev = 21;
 
                 if (!_iteratorNormalCompletion && _iterator["return"] != null) {
                   _iterator["return"]();
                 }
 
-              case 23:
-                _context.prev = 23;
+              case 22:
+                _context.prev = 22;
 
                 if (!_didIteratorError) {
-                  _context.next = 26;
+                  _context.next = 25;
                   break;
                 }
 
                 throw _iteratorError;
 
+              case 25:
+                return _context.finish(22);
+
               case 26:
-                return _context.finish(23);
+                return _context.finish(19);
 
               case 27:
-                return _context.finish(20);
-
-              case 28:
                 _iteratorNormalCompletion2 = true;
                 _didIteratorError2 = false;
                 _iteratorError2 = undefined;
-                _context.prev = 31;
+                _context.prev = 30;
                 _iterator2 = backData.employees[Symbol.iterator]();
 
-              case 33:
+              case 32:
                 if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
-                  _context.next = 41;
+                  _context.next = 40;
                   break;
                 }
 
                 _person = _step2.value;
 
                 if (!(_person.id === option._id)) {
-                  _context.next = 38;
+                  _context.next = 37;
                   break;
                 }
 
                 excludeWorkerTwo = _person.id;
-                return _context.abrupt("break", 41);
+                return _context.abrupt("break", 40);
 
-              case 38:
+              case 37:
                 _iteratorNormalCompletion2 = true;
-                _context.next = 33;
+                _context.next = 32;
                 break;
 
-              case 41:
-                _context.next = 47;
+              case 40:
+                _context.next = 46;
                 break;
 
-              case 43:
-                _context.prev = 43;
-                _context.t1 = _context["catch"](31);
+              case 42:
+                _context.prev = 42;
+                _context.t1 = _context["catch"](30);
                 _didIteratorError2 = true;
                 _iteratorError2 = _context.t1;
 
-              case 47:
+              case 46:
+                _context.prev = 46;
                 _context.prev = 47;
-                _context.prev = 48;
 
                 if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
                   _iterator2["return"]();
                 }
 
-              case 50:
-                _context.prev = 50;
+              case 49:
+                _context.prev = 49;
 
                 if (!_didIteratorError2) {
-                  _context.next = 53;
+                  _context.next = 52;
                   break;
                 }
 
                 throw _iteratorError2;
 
+              case 52:
+                return _context.finish(49);
+
               case 53:
-                return _context.finish(50);
+                return _context.finish(46);
 
               case 54:
-                return _context.finish(47);
-
-              case 55:
                 if (!(option._id === worker && option._id !== excludeWorkerOne && option._id !== excludeWorkerTwo)) {
-                  _context.next = 59;
+                  _context.next = 58;
                   break;
                 }
 
-                _context.next = 58;
+                _context.next = 57;
                 return Object(_apiCalls__WEBPACK_IMPORTED_MODULE_12__["sendNewEmployeeFromSelect"])({
                   id: option._id,
                   name: option.name,
@@ -56654,7 +56644,7 @@ var Management = function Management(_ref) {
                   salaryStatus: false
                 });
 
-              case 58:
+              case 57:
                 createEmployer({
                   id: option._id,
                   name: option.name,
@@ -56666,12 +56656,12 @@ var Management = function Management(_ref) {
                   salaryStatus: false
                 });
 
-              case 59:
+              case 58:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[3, 16, 20, 28], [21,, 23, 27], [31, 43, 47, 55], [48,, 50, 54]]);
+        }, _callee, null, [[3, 15, 19, 27], [20,, 22, 26], [30, 42, 46, 54], [47,, 49, 53]]);
       }));
 
       return function (_x) {

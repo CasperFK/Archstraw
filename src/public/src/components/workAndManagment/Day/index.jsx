@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
 
+import Calendar from '../../common/components/Calendar';
 import Button from '../../common/components/Button';
 import { sendNewDay, getListOfEmployee } from '../../../apiCalls';
 import actions from '../../../app/work/duck/actions';
@@ -25,16 +26,10 @@ const Day = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocati
     setLocation(location.pathname);
   }, location);
 
-  const now = new Date();
-
-  const date = `${now.getDate() < 10 ? `0${now.getDate()}` : now.getDate()}/${
-    now.getMonth() < 10 ? `0${now.getMonth()}` : now.getMonth()
-  }/${now.getFullYear()}`;
-
   const history = useHistory();
 
   const [form, setForm] = React.useState({
-    date,
+    date: '',
     ratio: 0,
   });
   const [error, setError] = React.useState(false);
@@ -102,7 +97,8 @@ const Day = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocati
   return (
     <FormContainer>
       <Title>
-        <span>{`${t('work.newDay.data')}: ${date}`}</span>
+        <Calendar name="date" handleChange={handleChange} value={form.date}/>
+        <span>{`${t('work.newDay.data')}: ${form.date}`}</span>
       </Title>
       <CreateDayContainer>
         <p style={{padding: '10px 0'}}>{t('work.newDay.ratioTitle')}</p>

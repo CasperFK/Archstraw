@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
+
+import ErrorMessage from '../../common/components/ErrorMesage';
 import Button from '../../common/components/Button';
 
 import {
@@ -15,49 +17,68 @@ import {
 
 import Employee from '../Employee';
 import actions from '../../../app/work/duck/actions';
-import { sendNewEmployeeFromSelect } from '../../../apiCalls';
+import {
+  sendNewEmployeeFromSelect,
+} from '../../../apiCalls';
 
-const Management = ({ date, ratio, employess, employee, createEmployer, setLocation, backData }) => {
+const Management = ({
+  date,
+  ratio,
+  employess,
+  employee,
+  createEmployer,
+  setLocation,
+  backData,
+}) => {
   const { t } = useTranslation();
   const location = useLocation();
-
+  const history = useHistory();
   const [worker, setWorker] = React.useState(employee[0]._id);
 
-  React.useEffect(()=> {
+  React.useEffect( () => {
     setLocation(location.pathname);
-  }, location);
+  }, [employee]);
+
+  if(employee === []) {
+    return (
+      <ErrorMessage>Błąd ładowania danych</ErrorMessage>
+    )
+  }
 
   const now = new Date();
 
   const currentTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
-  const history = useHistory();
-  const handleClick = e => {
+  const handleClick = (e) => {
     e.preventDefault();
     history.push('/work/create/');
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setWorker(e.target.value);
-  }
+  };
 
   const handleClickFromSelect = () => {
     employee.forEach(async (option) => {
       let excludeWorkerOne;
       let excludeWorkerTwo;
-      for(const person of employess) {
-        if(person.id === option._id) {
+      for (const person of employess) {
+        if (person.id === option._id) {
           excludeWorkerOne = person.id;
           break;
         }
       }
-      for(const person of backData.employees) {
-        if(person.id === option._id) {
+      for (const person of backData.employees) {
+        if (person.id === option._id) {
           excludeWorkerTwo = person.id;
           break;
         }
       }
-      if(option._id === worker && option._id !== excludeWorkerOne && option._id !== excludeWorkerTwo) {
+      if (
+        option._id === worker &&
+        option._id !== excludeWorkerOne &&
+        option._id !== excludeWorkerTwo
+      ) {
         await sendNewEmployeeFromSelect({
           id: option._id,
           name: option.name,
@@ -80,12 +101,12 @@ const Management = ({ date, ratio, employess, employee, createEmployer, setLocat
           salaryStatus: false,
         });
       }
-    })
-  }
+    });
+  };
 
-  const options = employee.map(({name, surname, _id}) =>
+  const options = employee.map(({ name, surname, _id }) => (
     <option key={_id} value={_id}>{`${name} ${surname}`}</option>
-  );
+  ));
 
   return (
     <>
@@ -97,7 +118,10 @@ const Management = ({ date, ratio, employess, employee, createEmployer, setLocat
             )} ${ratio} ${t('work.managment.currency')}`}
           </Title>
           <Container special>
-            <Button handleClick={handleClick} text={t('work.managment.addEmployer')} />
+            <Button
+              handleClick={handleClick}
+              text={t('work.managment.addEmployer')}
+            />
             <Container>
               <ChooseFromSelect>
                 {t('work.managment.chooseFromSelect')}
@@ -105,13 +129,25 @@ const Management = ({ date, ratio, employess, employee, createEmployer, setLocat
               <OptionContainer value={worker} onChange={handleChange}>
                 {options}
               </OptionContainer>
-              <Button handleClick={handleClickFromSelect} text={t('work.managment.accept')} />
+              <Button
+                handleClick={handleClickFromSelect}
+                text={t('work.managment.accept')}
+              />
             </Container>
           </Container>
           <div>
-            {employess.map(({ id, name, surname, state, salaryStatus }) => (
-              <Employee key={id} id={id} name={name} surname={surname} state={state} salaryStatus={salaryStatus}/>
-            )).reverse()}
+            {employess
+              .map(({ id, name, surname, state, salaryStatus }) => (
+                <Employee
+                  key={id}
+                  id={id}
+                  name={name}
+                  surname={surname}
+                  state={state}
+                  salaryStatus={salaryStatus}
+                />
+              ))
+              .reverse()}
           </div>
         </CurrentDay>
       ) : (
@@ -143,4 +179,7 @@ const mapStateToProps = (state) => ({
   employee: state.employee.permanentEmployee,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Management));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withTranslation()(Management));

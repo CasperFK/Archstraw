@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 import actions from '../../../../app/signIn/duck/actions';
-import MainPage from '../../../mainPage/MainPage';
-import Statistics from '../../../statistics/Statistics';
-import Work from '../../../workAndManagment/Work';
+import MainPage from '../../../MainPage/MainPage';
+// import Statistics from '../../../StatisticsPage/Statistics';
+import Work from '../../../WorkAndManagmentPage/Work';
 import {
   Wrapper,
   Navigation,
@@ -16,15 +15,17 @@ import {
 import { useTranslation } from 'react-i18next';
 import Button from '../../../common/components/Button';
 
-const Menu = ({ changeIncorrect }) => {
+const Menu = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
   const [pathname, setPathname] = React.useState('/');
   const handleClick = e => {
     e.preventDefault();
     localStorage.removeItem('authToken');
     localStorage.removeItem('refreshToken');
     window.location.href = '/';
-    changeIncorrect();
+    dispatch(actions.changeIncorrect());
   };
 
   return (
@@ -38,8 +39,8 @@ const Menu = ({ changeIncorrect }) => {
             <ListItem flag={pathname.includes('/work')}>
               <StyledLink flag={pathname.includes('/work')} to="/work">{t('menu.workDesk')}</StyledLink>
             </ListItem>
-            {/*<ListItem flag={pathname === '/statistics'}>*/}
-            {/*  <StyledLink flag={pathname === '/statistics'} to="/statistics">{t('menu.statistics')}</StyledLink>*/}
+            {/*<ListItem flag={pathname === '/StatisticsPage'}>*/}
+            {/*  <StyledLink flag={pathname === '/StatisticsPage'} to="/StatisticsPage">{t('menu.StatisticsPage')}</StyledLink>*/}
             {/*</ListItem>*/}
           </ListWrapper>
         </Navigation>
@@ -48,7 +49,7 @@ const Menu = ({ changeIncorrect }) => {
           <Route path="/work">
             <Work setPathname={setPathname} />
           </Route>
-          {/*<Route path="/statistics">*/}
+          {/*<Route path="/StatisticsPage">*/}
           {/*  <Statistics setPathname={setPathname} />*/}
           {/*</Route>*/}
           <Route path="/">
@@ -61,12 +62,4 @@ const Menu = ({ changeIncorrect }) => {
   );
 };
 
-Menu.propTypes = {
-  changeIncorrect: PropTypes.func,
-}
-
-const mapDispatchToProps = dispatch => ({
-  changeIncorrect: () => dispatch(actions.changeIncorrect()),
-});
-
-export default connect(null, mapDispatchToProps)(Menu);
+export default Menu;

@@ -40,7 +40,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   devServer: {
-    contentBase: path.join(__dirname, 'public/'),
+    contentBase: path.join(__dirname, 'public/dev/'),
     port: 3035,
     publicPath: 'http://localhost:3035/dist/',
     historyApiFallback: true,
@@ -49,7 +49,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: './public/index.html',
+      template: './public/dev/index.html',
       filename: './index.html',
     }),
   ],

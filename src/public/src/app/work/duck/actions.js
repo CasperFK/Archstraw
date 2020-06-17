@@ -26,4 +26,16 @@ const updateEmployeeSalaryState = (employee) => ({
   employee,
 })
 
-export default { createDay, addEmployer, getPermanentEmployeeFromApi, updateEmployeeState, updateEmployeeSalaryState };
+const clearDay = () => ({
+  type: types.CLEAR_DAY
+})
+
+const clearEmployee = () => ({
+  type: types.CLEAR_EMPLOYEE,
+})
+
+const clearPermanentEmployee = () => ({
+  type: types.CLEAR_PERMANENT_EMPLOYEE,
+})
+
+export default { createDay, clearDay, clearEmployee, clearPermanentEmployee, addEmployer, getPermanentEmployeeFromApi, updateEmployeeState, updateEmployeeSalaryState };

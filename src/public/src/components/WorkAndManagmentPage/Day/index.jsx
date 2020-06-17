@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
@@ -17,14 +17,15 @@ import {
 
 const regex = /[-+]?(?:\d*\.?\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?$/;
 
-const Day = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocation }) => {
+const Day = ({ setLocation }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const location = useLocation();
 
   React.useEffect(() => {
     setLocation(location.pathname);
-  }, location);
+  }, [location]);
 
   const history = useHistory();
 
@@ -60,15 +61,15 @@ const Day = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocati
         employess: [],
       });
       if(backData === []) {
-        createDay(form);
+        dispatch(actions.createDay(form));
       } else {
-        createDay({
+        dispatch(actions.createDay({
           date: backData.date,
           ratio: backData.ratio,
           backData,
-        })
+        }))
         backData.employees.map(worker => {
-          createEmployee({
+          dispatch(actions.addEmployer({
             id: worker.id,
             name: worker.name,
             surname: worker.surname,
@@ -77,8 +78,10 @@ const Day = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocati
             endWork: worker.endWork,
             state: parseInt(worker.state),
             salaryStatus: worker.salaryStatus,
-          })
+          }))
         })
+        const dataToLocalStorage = JSON.stringify(backData);
+        localStorage.setItem('backData', dataToLocalStorage);
       }
       setForm({
         ...form,
@@ -90,7 +93,7 @@ const Day = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocati
       return; 
     }
     const employee = await getListOfEmployee();
-    getPermanentEmployeeFromApi(employee);
+    dispatch(actions.getPermanentEmployeeFromApi(employee));
     history.push('/work/managment');
   };
 
@@ -116,17 +119,8 @@ const Day = ({ createDay, getPermanentEmployeeFromApi, createEmployee, setLocati
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  getPermanentEmployeeFromApi: (value) => dispatch(actions.getPermanentEmployeeFromApi(value)),
-  createDay: (value) => dispatch(actions.createDay(value)),
-  createEmployee: (employer) => dispatch(actions.addEmployer(employer)),
-});
-
 Day.propTypes = {
   setLocation: PropTypes.func,
-  getPermanentEmployeeFromApi: PropTypes.func,
-  createDay: PropTypes.func,
-  createEmployee: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(withTranslation()(Day));
+export default withTranslation()(Day);

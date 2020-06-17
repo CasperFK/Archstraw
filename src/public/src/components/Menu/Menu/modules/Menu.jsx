@@ -40,7 +40,7 @@ const Menu = () => {
               <StyledLink flag={pathname.includes('/work')} to="/work">{t('menu.workDesk')}</StyledLink>
             </ListItem>
             {/*<ListItem flag={pathname === '/StatisticsPage'}>*/}
-            {/*  <StyledLink flag={pathname === '/StatisticsPage'} to="/StatisticsPage">{t('menu.StatisticsPage')}</StyledLink>*/}
+            {/*  <StyledLink flag={pathname === '/StatisticsPage'} to="/StatisticsPage">{t('Menu.StatisticsPage')}</StyledLink>*/}
             {/*</ListItem>*/}
           </ListWrapper>
         </Navigation>

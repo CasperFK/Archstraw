@@ -6,7 +6,7 @@ import store from './store';
 import './i18n';
 
 ReactDOM.render(
-  <Suspense fallback="loading">
+  <Suspense fallback="loading...">
     <Provider store={store}>
       <App />
     </Provider>

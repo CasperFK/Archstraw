@@ -132,7 +132,7 @@
     }
 
     function bindMenuButton() {
-        document.getElementById('btn-menu').addEventListener('click', function() {
+        document.getElementById('btn-Menu').addEventListener('click', function() {
             if ($xsMenu.css('display') === 'none') {
                 $body.removeClass('with-search');
                 $mainContainer.css('height', 'calc(100% - 50px)');
@@ -155,7 +155,7 @@
         $searchResultsCount = $searchTitle.find('.search-results-count');
         $searchQuery        = $searchTitle.find('.search-query');
         $mainContainer      = $('.container-fluid');
-        $xsMenu             = $('.xs-menu');
+        $xsMenu             = $('.xs-Menu');
 
         // Launch query based on input content
         function handleUpdate(item) {

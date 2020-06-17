@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
 
-import ErrorMessage from '../../common/components/ErrorMesage';
 import Button from '../../common/components/Button';
-
+import CreateEmployee from '../Employee/modules/CreateEmployee';
 import {
   CurrentDay,
   Title,
@@ -14,44 +13,94 @@ import {
   OptionContainer,
   Container,
 } from '../style';
-
 import Employee from '../Employee';
 import actions from '../../../app/work/duck/actions';
 import {
+  getListOfEmployee, sendNewDay,
   sendNewEmployeeFromSelect,
 } from '../../../apiCalls';
 
-const Management = ({
+const mapStateToProps = ({
+  dayOfWork: { date, ratio, backData },
+  employer: { employess },
+  employee: { permanentEmployee },
+}) => ({
   date,
   ratio,
-  employess,
-  employee,
-  createEmployer,
-  setLocation,
   backData,
-}) => {
+  employess,
+  permanentEmployee,
+});
+
+const Management = ({ setLocation }) => {
+  const {
+    date,
+    ratio,
+    backData,
+    employess,
+    permanentEmployee,
+  } = useSelector(mapStateToProps);
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const location = useLocation();
-  const history = useHistory();
-  const [worker, setWorker] = React.useState(employee[0]._id);
+  const [modal, setModal] = useState(false);
+  const [worker, setWorker] = useState(
+    permanentEmployee.length ? permanentEmployee[0]._id : '',
+  );
 
-  React.useEffect( () => {
+  const savedBackData = JSON.parse(localStorage.getItem('backData'));
+
+  const getData = async () => {
+    const backData = await sendNewDay({
+      date: savedBackData.date,
+      ratio: savedBackData.ratio,
+      employess: [],
+    });
+    if(!employess.length && backData.employees) {
+      dispatch(actions.clearEmployee());
+      backData.employees.forEach(item => {
+        dispatch(actions.addEmployer({
+          ...item,
+          state: parseInt(item.state),
+        }));
+      })
+    }
+    console.log(backData)
+    if (worker === '' && !permanentEmployee.length) {
+      const data = await getListOfEmployee();
+      dispatch(actions.getPermanentEmployeeFromApi([...data]));
+    }
+  };
+
+  const unSubscribe = () => {
+    dispatch(actions.clearPermanentEmployee());
+    dispatch(actions.clearEmployee());
+    dispatch(actions.clearDay());
+  };
+
+  React.useEffect(() => {
     setLocation(location.pathname);
-  }, [employee]);
-
-  if(employee === []) {
-    return (
-      <ErrorMessage>Błąd ładowania danych</ErrorMessage>
-    )
-  }
+    if (date === '') {
+      dispatch(
+        actions.createDay({
+          date: savedBackData.date,
+          ratio: savedBackData.ratio,
+          backData: savedBackData,
+        }),
+      );
+    }
+    getData();
+    return () => {
+      unSubscribe();
+    };
+  }, []);
 
   const now = new Date();
-
   const currentTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
   const handleClick = (e) => {
     e.preventDefault();
-    history.push('/work/create/');
+    setModal(true);
   };
 
   const handleChange = (e) => {
@@ -59,7 +108,7 @@ const Management = ({
   };
 
   const handleClickFromSelect = () => {
-    employee.forEach(async (option) => {
+    permanentEmployee.forEach(async (option) => {
       let excludeWorkerOne;
       let excludeWorkerTwo;
       for (const person of employess) {
@@ -90,28 +139,35 @@ const Management = ({
           date,
           salaryStatus: false,
         });
-        createEmployer({
-          id: option._id,
-          name: option.name,
-          surname: option.surname,
-          phoneNumber: option.phoneNumber,
-          startWork: currentTime,
-          endWork: '',
-          state: 0,
-          salaryStatus: false,
-        });
+        dispatch(
+          actions.addEmployer({
+            id: option._id,
+            name: option.name,
+            surname: option.surname,
+            phoneNumber: option.phoneNumber,
+            startWork: currentTime,
+            endWork: '',
+            state: 0,
+            salaryStatus: false,
+          }),
+        );
       }
     });
   };
 
-  const options = employee.map(({ name, surname, _id }) => (
+  const onClose = () => {
+    setModal(false);
+  }
+
+  const options = permanentEmployee.map(({ name, surname, _id }) => (
     <option key={_id} value={_id}>{`${name} ${surname}`}</option>
   ));
 
   return (
     <>
+      {modal ? <CreateEmployee onClose={onClose} /> : null}
       {date !== '' ? (
-        <CurrentDay>
+        <CurrentDay modal={modal}>
           <Title>
             {`${t('work.managment.currentDate')} ${date} ${t(
               'work.managment.ratio',
@@ -159,27 +215,6 @@ const Management = ({
 
 Management.propTypes = {
   setLocation: PropTypes.func,
-  date: PropTypes.string.isRequired,
-  ratio: PropTypes.number.isRequired,
-  employess: PropTypes.array,
-  createEmployer: PropTypes.func,
-  employee: PropTypes.array,
-  backData: PropTypes.array,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  createEmployer: (employer) => dispatch(actions.addEmployer(employer)),
-});
-
-const mapStateToProps = (state) => ({
-  date: state.dayOfWork.date,
-  ratio: state.dayOfWork.ratio,
-  backData: state.dayOfWork.backData,
-  employess: state.employer.employess,
-  employee: state.employee.permanentEmployee,
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withTranslation()(Management));
+export default withTranslation()(Management);

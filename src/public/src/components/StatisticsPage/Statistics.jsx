@@ -9,10 +9,10 @@ const Statistics = ({ setPathname }) => {
 
   React.useEffect(()=> {
     setPathname(location.pathname);
-  }, location);
+  }, [location]);
 
   return (
-    <div style={{minHeight: '80vh'}}>{t('statistics')}</div>
+    <div style={{minHeight: '80vh'}}>{t('StatisticsPage')}</div>
   );
 };
 

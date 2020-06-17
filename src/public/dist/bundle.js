@@ -53840,7 +53840,7 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
 Object.defineProperty(exports, "__esModule", { value: true });
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 // prettier-ignore
-exports.reset = styled_components_1.css(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n  line-height: 1;\n}\nol, ul {\n  list-style: none;\n}\nblockquote, q {\n  quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n"], ["\n/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, menu, nav, section {\n  display: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n  line-height: 1;\n}\nol, ul {\n  list-style: none;\n}\nblockquote, q {\n  quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n"])));
+exports.reset = styled_components_1.css(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, Menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, Menu, nav, section {\n  display: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n  line-height: 1;\n}\nol, ul {\n  list-style: none;\n}\nblockquote, q {\n  quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n"], ["\n/* http://meyerweb.com/eric/tools/css/reset/\n   v4.0 | 20180602\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmain, Menu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, main, Menu, nav, section {\n  display: block;\n}\n/* HTML5 hidden-attribute fix for newer browsers */\n*[hidden] {\n    display: none;\n}\nbody {\n  line-height: 1;\n}\nol, ul {\n  list-style: none;\n}\nblockquote, q {\n  quotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n"])));
 exports.Reset = styled_components_1.createGlobalStyle(templateObject_2 || (templateObject_2 = __makeTemplateObject(["", ""], ["", ""])), exports.reset);
 exports.default = exports.reset;
 var templateObject_1, templateObject_2;
@@ -54235,7 +54235,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_reset__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_reset__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-i18next */ "./node_modules/react-i18next/dist/es/index.js");
 /* harmony import */ var _PageApp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PageApp */ "./src/PageApp.jsx");
-/* harmony import */ var _components_menu_Menu__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/menu/Menu */ "./src/components/menu/Menu/index.jsx");
+/* harmony import */ var _components_menu_Menu__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Menu/Menu */ "./src/components/menu/Menu/index.jsx");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
 
@@ -54993,7 +54993,7 @@ SecondaryInput.propTypes = {
 
 /***/ "./src/components/mainPage/MainPage.jsx":
 /*!**********************************************!*\
-  !*** ./src/components/mainPage/MainPage.jsx ***!
+  !*** ./src/components/MainPage/MainPage.jsx ***!
   \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -55047,7 +55047,7 @@ MainPage.propTypes = {
 
 /***/ "./src/components/mainPage/styles/styles.js":
 /*!**************************************************!*\
-  !*** ./src/components/mainPage/styles/styles.js ***!
+  !*** ./src/components/MainPage/styles/styles.js ***!
   \**************************************************/
 /*! exports provided: Wrapper, Title, Features, ListItem, Arrow, ArrowContainer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -55137,7 +55137,7 @@ var ArrowContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].d
 
 /***/ "./src/components/menu/LoginForm/index.jsx":
 /*!*************************************************!*\
-  !*** ./src/components/menu/LoginForm/index.jsx ***!
+  !*** ./src/components/Menu/LoginForm/index.jsx ***!
   \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -55298,7 +55298,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ "./src/components/menu/Menu/index.jsx":
 /*!********************************************!*\
-  !*** ./src/components/menu/Menu/index.jsx ***!
+  !*** ./src/components/Menu/Menu/index.jsx ***!
   \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -55347,7 +55347,7 @@ var mapStateToProps = function mapStateToProps(state) {
 
 /***/ "./src/components/menu/Menu/modules/Menu.jsx":
 /*!***************************************************!*\
-  !*** ./src/components/menu/Menu/modules/Menu.jsx ***!
+  !*** ./src/components/Menu/Menu/modules/Menu.jsx ***!
   \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -55363,9 +55363,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _app_signIn_duck_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../app/signIn/duck/actions */ "./src/app/signIn/duck/actions.js");
-/* harmony import */ var _mainPage_MainPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../mainPage/MainPage */ "./src/components/mainPage/MainPage.jsx");
-/* harmony import */ var _statistics_Statistics__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../statistics/Statistics */ "./src/components/statistics/Statistics.jsx");
-/* harmony import */ var _workAndManagment_Work__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../workAndManagment/Work */ "./src/components/workAndManagment/Work/index.jsx");
+/* harmony import */ var _mainPage_MainPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../MainPage/MainPage */ "./src/components/mainPage/MainPage.jsx");
+/* harmony import */ var _statistics_Statistics__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../StatisticsPage/Statistics */ "./src/components/statistics/Statistics.jsx");
+/* harmony import */ var _workAndManagment_Work__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../WorkAndManagmentPage/Work */ "./src/components/workAndManagment/Work/index.jsx");
 /* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../style */ "./src/components/menu/style.js");
 /* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-i18next */ "./node_modules/react-i18next/dist/es/index.js");
 /* harmony import */ var _common_components_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../common/components/Button */ "./src/components/common/components/Button.jsx");
@@ -55406,12 +55406,12 @@ var Menu = function Menu(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_9__["StyledLink"], {
     flag: pathname === '/',
     to: "/"
-  }, t('menu.start'))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_9__["ListItem"], {
+  }, t('Menu.start'))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_9__["ListItem"], {
     flag: pathname.includes('/work')
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_9__["StyledLink"], {
     flag: pathname.includes('/work'),
     to: "/work"
-  }, t('menu.workDesk'))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+  }, t('Menu.workDesk'))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     path: "/work"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_workAndManagment_Work__WEBPACK_IMPORTED_MODULE_8__["default"], {
     setPathname: setPathname
@@ -55421,7 +55421,7 @@ var Menu = function Menu(_ref) {
     setPathname: setPathname
   }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_common_components_Button__WEBPACK_IMPORTED_MODULE_11__["default"], {
     logout: true,
-    text: t('menu.logout'),
+    text: t('Menu.logout'),
     handleClick: handleClick
   })));
 };
@@ -55444,7 +55444,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ "./src/components/menu/style.js":
 /*!**************************************!*\
-  !*** ./src/components/menu/style.js ***!
+  !*** ./src/components/Menu/style.js ***!
   \**************************************/
 /*! exports provided: PageTitle, FormContainer, Title, LoginPart, Wrapper, Navigation, ListWrapper, ListItem, StyledLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -55660,7 +55660,7 @@ var withValidate = function withValidate(WrappedComponent) {
 
 /***/ "./src/components/statistics/Statistics.jsx":
 /*!**************************************************!*\
-  !*** ./src/components/statistics/Statistics.jsx ***!
+  !*** ./src/components/StatisticsPage/Statistics.jsx ***!
   \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -55692,7 +55692,7 @@ var Statistics = function Statistics(_ref) {
     style: {
       minHeight: '80vh'
     }
-  }, t('statistics'));
+  }, t('StatisticsPage'));
 };
 
 Statistics.propTypes = {
@@ -55704,7 +55704,7 @@ Statistics.propTypes = {
 
 /***/ "./src/components/workAndManagment/Day/index.jsx":
 /*!*******************************************************!*\
-  !*** ./src/components/workAndManagment/Day/index.jsx ***!
+  !*** ./src/components/WorkAndManagmentPage/Day/index.jsx ***!
   \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -55935,7 +55935,7 @@ Day.propTypes = {
 
 /***/ "./src/components/workAndManagment/Employee/index.jsx":
 /*!************************************************************!*\
-  !*** ./src/components/workAndManagment/Employee/index.jsx ***!
+  !*** ./src/components/WorkAndManagmentPage/Employee/index.jsx ***!
   \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -56203,7 +56203,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ "./src/components/workAndManagment/Employee/modules/CreateEmployee.jsx":
 /*!*****************************************************************************!*\
-  !*** ./src/components/workAndManagment/Employee/modules/CreateEmployee.jsx ***!
+  !*** ./src/components/WorkAndManagmentPage/Employee/modules/CreateEmployee.jsx ***!
   \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -56415,7 +56415,7 @@ CreateEmployee.propTypes = {
 
 /***/ "./src/components/workAndManagment/Management/index.jsx":
 /*!**************************************************************!*\
-  !*** ./src/components/workAndManagment/Management/index.jsx ***!
+  !*** ./src/components/WorkAndManagmentPage/Management/index.jsx ***!
   \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -56741,7 +56741,7 @@ var mapStateToProps = function mapStateToProps(state) {
 
 /***/ "./src/components/workAndManagment/Topic.jsx":
 /*!***************************************************!*\
-  !*** ./src/components/workAndManagment/Topic.jsx ***!
+  !*** ./src/components/WorkAndManagmentPage/Topic.jsx ***!
   \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -56803,7 +56803,7 @@ Topic.propTypes = {
 
 /***/ "./src/components/workAndManagment/Work/index.jsx":
 /*!********************************************************!*\
-  !*** ./src/components/workAndManagment/Work/index.jsx ***!
+  !*** ./src/components/WorkAndManagmentPage/Work/index.jsx ***!
   \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -56887,7 +56887,7 @@ var mapStateToProps = function mapStateToProps(state) {
 
 /***/ "./src/components/workAndManagment/style.js":
 /*!**************************************************!*\
-  !*** ./src/components/workAndManagment/style.js ***!
+  !*** ./src/components/WorkAndManagmentPage/style.js ***!
   \**************************************************/
 /*! exports provided: EmployeeWrapper, WrapperForm, WrapperLabel, FieldTitle, FieldInput, Btn, CurrentDay, SimpleButton, Title, Wrapper, NavWrapper, Navigation, ListItem, InfoElement, LinkItem, ChooseFromSelect, OptionContainer, CreateDayContainer, Container, FormContainer, EmployeeOperators, EmployeeNameSurname, HoverElement */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

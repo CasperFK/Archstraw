@@ -15,9 +15,9 @@ const StyledPageApp = styled.h1`
   color: white;
 `;
 
-const PageApp = ({ title, formFlag }) => {
-  return <StyledPageApp flag={formFlag}>{title}</StyledPageApp>;
-};
+const PageApp = ({ title, formFlag }) => (
+  <StyledPageApp flag={formFlag}>{title}</StyledPageApp>
+);
 
 PageApp.propTypes = {
   formFlag: PropTypes.bool.isRequired,

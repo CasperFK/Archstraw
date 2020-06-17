@@ -15,6 +15,13 @@ const dayService = (state = INITIAL_STATE, action) => {
         ratio: action.value.ratio,
         backData: action.value.backData,
       };
+    case types.CLEAR_DAY:
+      return {
+        ...state,
+        date: '',
+        ratio: 0,
+        backData: [],
+      }
     default:
       return state;
   }

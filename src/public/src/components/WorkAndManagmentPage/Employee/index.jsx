@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDonate, faPlus, faMinus, faVoteYea } from '@fortawesome/free-solid-svg-icons';
@@ -16,17 +16,28 @@ import {
 } from '../style';
 import actions from '../../../app/work/duck/actions';
 
-const Employee = ({ date, name, surname, state, id, updateEmployee, employee, updateEmployeeSalaryState, salaryStatus }) => {
+const mapStateToProps = ({
+  employer: { employess },
+  dayOfWork: { date },
+}) => ({
+  employee: employess,
+  date,
+});
+
+const Employee = ({ name, surname, state, id, salaryStatus }) => {
+  const dispatch = useDispatch();
+  const { employee, date } = useSelector(mapStateToProps);
+
   const [accept, setAccept] = React.useState(false);
   const [aggregate, setAggregate] = React.useState(false);
   const handleAdd = async () => {
     const searchingEmployee = employee.filter((worker) => worker.id === id);
-    updateEmployee(searchingEmployee, '+');
+    dispatch(actions.updateEmployeeState(searchingEmployee, '+'));
   };
 
   const handleMinus = async () => {
     const searchingEmployee = employee.filter((worker) => worker.id === id);
-    updateEmployee(searchingEmployee, '-');
+    dispatch(actions.updateEmployeeState(searchingEmployee, '-'));
   };
 
   const acceptUpdate = async () => {
@@ -36,7 +47,7 @@ const Employee = ({ date, name, surname, state, id, updateEmployee, employee, up
 
   const acceptAggregate = async () => {
     const searchingEmployee = employee.filter((worker) => worker.id === id);
-    updateEmployeeSalaryState(searchingEmployee);
+    dispatch(actions.updateEmployeeSalaryState(searchingEmployee));
     await updateSalaryStatus({ id, salaryStatus: true, date })
     setAggregate(true);
   }
@@ -82,21 +93,6 @@ Employee.propTypes = {
   surname: PropTypes.string.isRequired,
   state: PropTypes.number.isRequired,
   salaryStatus: PropTypes.bool.isRequired,
-  employee: PropTypes.array,
-  updateEmployee: PropTypes.func,
-  date: PropTypes.string,
-  updateEmployeeSalaryState: PropTypes.func,
 };
 
-const mapStateToProps = (state) => ({
-  employee: state.employer.employess,
-  date: state.dayOfWork.date,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  updateEmployee: (employee, condition) =>
-    dispatch(actions.updateEmployeeState(employee, condition)),
-  updateEmployeeSalaryState: (employee) => dispatch(actions.updateEmployeeSalaryState(employee)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Employee);
+export default Employee;

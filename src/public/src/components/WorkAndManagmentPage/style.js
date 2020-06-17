@@ -42,6 +42,7 @@ export const Btn = styled.button`
 `;
 
 export const CurrentDay = styled.div`
+  display: ${(props) => props.modal ? 'none' : 'block'};
   min-height: 75vh;
   padding: 10px;
   text-align: center;

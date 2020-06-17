@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { withTranslation, useTranslation } from 'react-i18next';
 
-import { Wrapper, Title, Features, ListItem, ArrowContainer, Arrow } from './styles/styles';
+import { Wrapper, Features, ListItem, ArrowContainer, Arrow } from './styles/styles';
 
 const MainPage = ({ setPathname }) => {
   const { t } = useTranslation();

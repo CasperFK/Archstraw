@@ -2,12 +2,14 @@ import types from './types';
 
 const INITIAL_STATE = {
   employess: [],
+  createFlag: false,
 };
 
 const employeeHandle = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.ADD_EMPLOYEE:
       return {
+        ...state,
         employess: [
           ...state.employess,
           {
@@ -24,6 +26,7 @@ const employeeHandle = (state = INITIAL_STATE, action) => {
       };
     case types.UPDATE_EMPLOYEE:
       return {
+        ...state,
         employess: [
           ...state.employess.map((employee) => {
             if (employee.id === action.employee[0].id) {
@@ -58,6 +61,11 @@ const employeeHandle = (state = INITIAL_STATE, action) => {
           }),
         ],
       };
+    case types.CLEAR_EMPLOYEE: {
+      return {
+        employess: []
+      }
+    }
     default:
       return state;
   }

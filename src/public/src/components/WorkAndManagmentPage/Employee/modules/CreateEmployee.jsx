@@ -1,29 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { withTranslation, useTranslation } from 'react-i18next';
 
 import { sendNewEmployess } from '../../../../apiCalls';
 import actions from '../../../../app/work/duck/actions';
-import {
-  WrapperForm,
-  WrapperLabel,
-  FieldTitle,
-} from '../../style';
+import { WrapperForm, WrapperLabel, FieldTitle } from '../../style';
 import Button from '../../../common/components/Button';
 import SecondaryInput from '../../../common/components/SecondaryInput';
 
-const CreateEmployee = ({ handleChange, createEmployer, date }) => {
+const mapStateToProps = ({ dayOfWork: { date }}) => ({ date });
+
+const CreateEmployee = ({ onClose }) => {
+  const { date } = useSelector(mapStateToProps);
+  const dispatch = useDispatch();
   const { t } = useTranslation();
-  let history = useHistory();
 
   const now = new Date();
-
   const currentTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
-  const [error, setError] = React.useState(false);
-  const [form, setForm] = React.useState({
+  const [error, setError] = useState(false);
+  const [form, setForm] = useState({
     name: '',
     surname: '',
     phoneNumber: '',
@@ -32,10 +29,11 @@ const CreateEmployee = ({ handleChange, createEmployer, date }) => {
     state: 0,
     salaryStatus: false,
   });
-  const handleClickAccept = async e => {
-    const { name, surname, phoneNumber, startWork, endWork, state} = form;
+
+  const handleClickAccept = async (e) => {
+    const { name, surname, phoneNumber, startWork, endWork, state } = form;
     e.preventDefault();
-    if(name !== '' && surname !== '') {
+    if (name !== '' && surname !== '') {
       const newEmployesId = await sendNewEmployess({
         name,
         surname,
@@ -47,10 +45,8 @@ const CreateEmployee = ({ handleChange, createEmployer, date }) => {
         salaryStatus: false,
       });
 
-      console.log(newEmployesId);
-
-      if(newEmployesId) {
-        createEmployer({
+      if (newEmployesId) {
+        dispatch(actions.addEmployer({
           id: newEmployesId,
           name,
           surname,
@@ -59,27 +55,36 @@ const CreateEmployee = ({ handleChange, createEmployer, date }) => {
           endWork,
           state,
           salaryStatus: false,
-        });
+        }));
       }
     } else {
       setError(true);
       return;
     }
-    history.push('/work/managment/');
+    onClose();
   };
-  const handleClick = e => {
-    e.preventDefault();
-    history.push('/work/managment/');
+
+  const handleChange = (e, setForm, form) => {
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
   };
+
   return (
     <WrapperForm>
-      {error ? <span style={{color: 'red', display: 'block'}}>{t('work.createEmployer.error')}</span> : null}
+      {error ? (
+        <span style={{ color: 'red', display: 'block' }}>
+          {t('work.createEmployer.error')}
+        </span>
+      ) : null}
       <WrapperLabel>
         <FieldTitle>{t('work.createEmployer.name')}</FieldTitle>
         <SecondaryInput
           name="name"
           value={form.name}
-          handleChange={e => handleChange(e, setForm, form)}
+          handleChange={(e) => handleChange(e, setForm, form)}
           type="text"
           placeholder=""
         />
@@ -89,7 +94,7 @@ const CreateEmployee = ({ handleChange, createEmployer, date }) => {
         <SecondaryInput
           name="surname"
           value={form.surname}
-          handleChange={e => handleChange(e, setForm, form)}
+          handleChange={(e) => handleChange(e, setForm, form)}
           type="text"
           placeholder=""
         />
@@ -99,31 +104,23 @@ const CreateEmployee = ({ handleChange, createEmployer, date }) => {
         <SecondaryInput
           name="phoneNumber"
           value={form.phoneNumber}
-          handleChange={e => handleChange(e, setForm, form)}
+          handleChange={(e) => handleChange(e, setForm, form)}
           type="number"
           placeholder=""
         />
       </WrapperLabel>
-      <Button handleClick={handleClickAccept} text={t('work.createEmployer.confirm')} />
-      <Button handleClick={handleClick} text={t('work.createEmployer.cancel')} />
+      <Button
+        handleClick={handleClickAccept}
+        text={t('work.createEmployer.confirm')}
+      />
+      <Button handleClick={onClose} text={t('work.createEmployer.cancel')} />
     </WrapperForm>
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  createEmployer: (employer) => dispatch(actions.addEmployer(employer)),
-  addEmployer: (employer) => dispatch(actions.addEmployerToDay(employer))
-});
-
-const mapStateToProps = state => ({
-  date: state.dayOfWork.date,
-  listOfDays: state.dayOfWork.listOfDays,
-});
 
 CreateEmployee.propTypes = {
-  handleChange: PropTypes.func,
-  createEmployer: PropTypes.func,
-  date: PropTypes.string,
-}
+  onClose: PropTypes.func,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(CreateEmployee));
+export default withTranslation()(CreateEmployee);

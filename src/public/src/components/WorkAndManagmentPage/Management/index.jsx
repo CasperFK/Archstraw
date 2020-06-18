@@ -65,7 +65,6 @@ const Management = ({ setLocation }) => {
         }));
       })
     }
-    console.log(backData)
     if (worker === '' && !permanentEmployee.length) {
       const data = await getListOfEmployee();
       dispatch(actions.getPermanentEmployeeFromApi([...data]));

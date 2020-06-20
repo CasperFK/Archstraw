@@ -14,7 +14,7 @@ config();
     JwtRefreshAuthModule,
     JwtModule.register({
       secret: process.env.SECRET_KEY_FOR_NEW_TOKEN,
-      signOptions: {expiresIn: '600s'},
+      signOptions: {expiresIn: '24h'},
     }),
   ],
   providers: [

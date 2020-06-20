@@ -13,6 +13,10 @@ const getPermanentEmployee = (state = INITIAL_STATE, action) => {
           ...action.employee,
         ]
       }
+    case types.CLEAR_PERMANENT_EMPLOYEE:
+      return {
+        permanentEmployee: []
+      }
     default:
       return state;
   }

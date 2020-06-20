@@ -9,7 +9,7 @@ const StyledInput = styled.input`
   border-left: none;
   background-color:transparent;
   outline: none;
-  color: white;
+  color: ${(props) => props.dark ? "#333" : "#fff"};
   caret-color: white;
   height: 25px;
   
@@ -20,8 +20,8 @@ const StyledInput = styled.input`
   }
 `
 
-const Input = ({ name, type, value, handleChange, placeholder}) => (
-  <StyledInput name={name} type={type} value={value} onChange={handleChange} placeholder={placeholder} />
+const Input = ({ name, type, value, handleChange, placeholder, dark}) => (
+  <StyledInput dark={dark} name={name} type={type} value={value} onChange={handleChange} placeholder={placeholder} />
 );
 
 Input.propTypes = {
@@ -30,6 +30,7 @@ Input.propTypes = {
   value: PropTypes.string,
   handleChange: PropTypes.func,
   placeholder: PropTypes.string,
+  dark: PropTypes.bool,
 };
 
 export default Input;

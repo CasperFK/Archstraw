@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     var menuCollapsed = false,
-        mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu = document.getElementById('mobile-Menu');
 
     var localContextInUrl = '';
 
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
     processLogos(entityLogos);
 
     setTimeout(function() {
-        document.getElementById('btn-menu').addEventListener('click', function() {
+        document.getElementById('btn-Menu').addEventListener('click', function() {
             if (menuCollapsed) {
                 mobileMenu.style.display = 'none';
             } else {
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
             new Collapse(collapse, options);
         }
 
-        // collapse menu
+        // collapse Menu
         var classnameMenuToggler = document.getElementsByClassName('menu-toggler'),
             faAngleUpClass = 'ion-ios-arrow-up',
             faAngleDownClass = 'ion-ios-arrow-down',
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Scroll to active link
-        var menus = document.querySelectorAll('.menu'),
+        var menus = document.querySelectorAll('.Menu'),
             i = 0,
             len = menus.length,
             activeMenu,
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (parentUl) {
                             parentChapterMenu = parentUl.parentNode;
                             if (parentChapterMenu) {
-                                var toggler = parentChapterMenu.querySelector('.menu-toggler'),
+                                var toggler = parentChapterMenu.querySelector('.Menu-toggler'),
                                     elementIconChild = toggler.getElementsByClassName(
                                         faAngleUpClass
                                     )[0];
@@ -214,17 +214,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
                     if (linkContext && linkContext === 'sub-entity') {
-                        // Toggle also the master parent menu
+                        // Toggle also the master parent Menu
                         var linkContextId = activeLink.getAttribute('data-context-id');
                         var toggler = activeMenu.querySelector(
-                            '.chapter.' + linkContextId + ' a .menu-toggler'
+                            '.chapter.' + linkContextId + ' a .Menu-toggler'
                         );
                         if (toggler) {
                             toggler.click();
                         }
                         if (linkContextId === 'additional') {
                             var mainToggler = activeMenu.querySelector(
-                                '.chapter.' + linkContextId + ' div.menu-toggler'
+                                '.chapter.' + linkContextId + ' div.Menu-toggler'
                             );
                             if (mainToggler) {
                                 mainToggler.click();
@@ -233,13 +233,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 } else if (linkType === 'chapter-link') {
                     var linkContextId = activeLink.getAttribute('data-context-id');
-                    var toggler = activeLink.querySelector('.menu-toggler');
+                    var toggler = activeLink.querySelector('.Menu-toggler');
                     if (toggler) {
                         toggler.click();
                     }
                     if (linkContextId === 'additional') {
                         var mainToggler = activeMenu.querySelector(
-                            '.chapter.' + linkContextId + ' div.menu-toggler'
+                            '.chapter.' + linkContextId + ' div.Menu-toggler'
                         );
                         if (mainToggler) {
                             mainToggler.click();
